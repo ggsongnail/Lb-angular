@@ -1,0 +1,17 @@
+<div class="col-md-6 col-md-offset-3">
+<form>
+  <input type="hidden" ng-model="account.id" value="{{account.id}}">
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input type="text" class="form-control" ng-model="account.name" placeholder="Name" value="{{account.name}}"/>
+  </div>
+  <div class="form-group">
+    <label for="money">Money</label>
+    <input type="text" class="form-control" ng-model="account.money" placeholder="money" value="{{account.money}}"/>
+  </div>
+  <div class="form-group">
+  	<input type="submit" ng-click="update(account)" value="Save"/>
+  </div>
+  {{ 'Current version is v%VERSION%.' | interpolate }}
+</form>
+</div>
