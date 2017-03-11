@@ -19,12 +19,14 @@
 </head>
 <body>
   <ul class="menu">
-    <li><a href="#!/viewlibang/dictionary/list" class="btn btn-info">字典</a></li>
-    <li><a href="#!/viewlibang/dictionaryclassify/list" class="btn btn-info">字典类型</a></li>
-    <li><a href="#!/viewlibang/materialclassify/list" class="btn btn-info">材料类型</a></li>
-    <li><a href="#!/viewlibang/materialproduct/list" class="btn btn-info">材料产品</a></li>
-    <li><a href="#!/viewlibang/main" class="btn btn-info">主要材料收费单</a></li>
-    <li><a href="#!/viewlibang/assist" class="btn btn-info">辅助材料收费单</a></li>
+    <li><a href="#!/viewlibang/dictionary/list" class="btn btn-primary">字典</a></li>
+    <li><a href="#!/viewlibang/dictionaryclassify/list" class="btn btn-primary">字典类型</a></li>
+    <li><a href="#!/viewlibang/materialclassify/list" class="btn btn-primary">材料类型</a></li>
+    <li><a href="#!/viewlibang/materialproduct/list" class="btn btn-primary">材料产品</a></li>
+    <li><a href="#!/viewlibang/orderlb/list" class="btn btn-primary">合同管理</a></li>
+    
+    <!-- <li><a href="#!/viewlibang/materialmainbill/2009848484/0" class="btn btn-primary">主要材料收费单</a></li>
+    <li><a href="#!/viewlibang/materialassistbill/2009848484/1" class="btn btn-primary">辅助材料收费单</a></li> -->
   </ul>
 
   <!--[if lt IE 7]>
@@ -38,7 +40,14 @@
   <!-- In production use:
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
   -->
+
+  <script src="app/bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="app/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <link href="app/bower_components/angular.DatetimePicker-master/jquery.datetimepicker.css" rel="stylesheet">
+  <script src="app/bower_components/angular.DatetimePicker-master/jquery.datetimepicker.js"></script>
+  
   <script src="app/bower_components/angular/angular.js"></script>
+  <script src="app/bower_components/angular.DatetimePicker-master/angular.datetime.js"></script>
   <script src="app/bower_components/angular-route/angular-route.js"></script>
   <script src="https://unpkg.com/ng-table@2.0.2/bundles/ng-table.min.js"></script>
   <script src="app/app.js"></script>
@@ -49,7 +58,5 @@
   <script src="app/components/version/version.js"></script>
   <script src="app/components/version/version-directive.js"></script>
   <script src="app/components/version/interpolate-filter.js"></script>
-  
-  
 </body>
 </html>

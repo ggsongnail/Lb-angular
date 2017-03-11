@@ -2,12 +2,12 @@
 	<div class="container">
 		<div class="col-md-12">
 			<div class="text-right">
-				<button><a href="#!/viewlibang/dictionaryclassify/create">新增</a></button>
-				<!-- <a href="#!/viewlibang/dictionaryClassify/create/1">新增</a> -->
+				<a class="btn btn-info" href="#!/viewlibang/dictionaryclassify/create">新增</a>
 			</div>
+			<br><br>
 		</div>
 		<div class="col-md-12">
-			<table ng-table="tableParams" class="table table-hover">
+			<table ng-table="tableParams" class="table table-bordered">
 				<thead>
 					<tr>
 						<th>ID</th>
@@ -19,11 +19,14 @@
 				</thead>
 				<tbody>
 					<tr ng-repeat="dictionaryClassify in $data">
-						<td class="active">{{ $index + 1 }}</td>
-						<td class="success">{{dictionaryClassify.name}}</td>
-						<td class="info">{{dictionaryClassify.dictionary.name}}</td>
-						<td class="warning">{{(dictionaryClassify.updateDate||now) | date:'yyyy-MM-dd HH:mm:ss'}}</td>
-						<td class="danger"><button><a ng-href="#!/viewlibang/dictionaryclassify/update/{{dictionaryClassify.id}}">编辑</a></button>&nbsp;<button>删除</button></td>
+						<td>{{ $index + 1 }}</td>
+						<td>{{dictionaryClassify.name}}</td>
+						<td>{{dictionaryClassify.dictionary.name}}</td>
+						<td>{{(dictionaryClassify.updateDate||now) | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+						<td>
+							<a class="btn btn-default" ng-href="#!/viewlibang/dictionaryclassify/update/{{dictionaryClassify.id}}">编辑</a>
+							<a class="btn btn-danger" ng-href="#!/viewlibang/dictionaryclassify/update/{{dictionaryClassify.id}}">删除</a>
+						</td>
 					</tr>
 				</tbody>
 			</table>

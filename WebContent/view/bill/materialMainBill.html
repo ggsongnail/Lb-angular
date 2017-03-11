@@ -1,10 +1,27 @@
 <style>
-.leftborder{
-	border-left:thick double #ff0000;
+.input-mini {
+	width: 80px;
+	height: 30px;
+}
+
+.input-minier {
+	width: 65px;
+	height: 30px;
+}
+td{
+	vertical-align: middle !important;
+	line-height: 30px !important;
 }
 </style>
 <body>
 	<div class="container">
+		<div class="row">
+			<div class="text-right">
+				<button class="btn btn-warning" ng-click="submit()">提交</button>
+			</div>
+			
+			
+		</div>
 		<div class="row">
 			<div class="col-md-6 col-md-offset-3">
 				<h3 class="text-center">立邦刷新服务运营商主要材料收费单</h3>
@@ -12,86 +29,123 @@
 		</div>
 		<div class="row">
 			<div class="col-md-4">
-				<b>合同编号：201789034277</b>
+				<b>合同编号：{{orderLb.orderNo}}</b>
 			</div>
 			<div class="col-md-4">
-				<b>TM：立邦涂漆</b>
+				<b>TM：{{orderLb.orderTm}}</b>
 			</div>
 			<div class="col-md-4">
-				<b>系统编号：LB001001</b>
+				<b>系统编号：{{orderLb.sysNo}}</b>
 			</div>
 		</div>
-		<hr/>
+		<hr />
 		<div class="row">
 			<div class="col-md-4">
-				<b>客户姓名：黄廉松</b>
+				<b>客户姓名：{{orderLb.customer}}</b>
 			</div>
 			<div class="col-md-4">
-				<b>联系电话：13076761307</b>
+				<b>联系电话：{{orderLb.tel}}</b>
 			</div>
 			<div class="col-md-4">
-				<b>小区名称：广州市棠东富华新街28号</b>
+				<b>小区名称：{{orderLb.uptownName}}</b>
 			</div>
 		</div>
-		<hr/>
+		<hr />
 		<div class="row">
 			<div class="col-md-4">
-				<b>施工地址：广州市棠东富华新街28号B101</b>
+				<b>施工地址：{{orderLb.buildAddress}}</b>
 			</div>
 			<div class="col-md-4">
-				<b>区：天河区</b>
+				<b>区：{{orderLb.region}}</b>
 			</div>
 			<div class="col-md-4">
-				<b>合同定金：500元</b>
+				<b>合同定金：{{orderLb.deposit}}元</b>
 			</div>
 		</div>
-		<br/>
+		<br />
 		<div class="row">
-			<div class="col-md-6" style="padding-right:0px;">
-				<table class="table table-bordered"　style="border-right:2px solid #c1c1c1 !important;">
+			<div class="col-md-6" style="padding-right: 0px;">
+				<table id="ltable" class="table table-bordered"
+					　style="border-right: 2px solid #c1c1c1 !important;">
 					<thead>
 						<tr>
-							<th>商品名称</th>
+							<th>商品</th>
 							<th>包装</th>
-							<th>单价元</th>
+							<th>单价</th>
 							<th>数量</th>
+							<th>总价</th>
 							<th>合计元</th>
 						</tr>
 					</thead>
-					<tbody>
-						<tr><th colspan=5>乳胶漆面漆－内墙产品</th></tr>
+					<tbody ng-repeat="(key,value) in left">
 						<tr>
-				          <th scope="row">儿童漆</th>
-				          <td>Mark</td>
-				          <td>Otto</td>
-				          <td>@mdo</td>
-				          <td>@mdo</td>
-				        </tr>
-				        <tr><th colspan=5></th></tr>
+							<th colspan=6 style="color: #3c763d;">{{key}}</th>
+						</tr>
+						<tr ng-repeat="orderProduct in value">
+							<th scope="row">{{orderProduct.materialProduct.name}}</th>
+							<td>{{orderProduct.materialProduct.standard}}</td>
+							<td>{{orderProduct.materialProduct.price}}</td>
+							<td><input class="input-minier form-control" type="number"
+								ng-model="orderProduct.count" min="0"></td>
+							<td>{{orderProduct.materialProduct.price*orderProduct.count}}</td>
+							<td><input class="input-mini form-control" type="number"
+								ng-model="orderProduct.total"></td>
+						</tr>
+						<tr>
+							<th colspan=6></th>
+						</tr>
 					</tbody>
 				</table>
 			</div>
-			<div class="col-md-6" style="padding-left:0px;">
-				<table class="table table-bordered">
+			<div class="col-md-6" style="padding-left: 0px;">
+				<table id="rtable" class="table table-bordered">
 					<thead>
 						<tr>
-							<th>商品名称</th>
+							<th>商品</th>
 							<th>包装</th>
-							<th>单价元</th>
+							<th>单价</th>
 							<th>数量</th>
+							<th>总价</th>
 							<th>合计元</th>
 						</tr>
 					</thead>
-					<tbody>
-						<tr><th colspan=5>艺术漆－意大利质感效果</th></tr>
+					<tbody ng-repeat="(key,value) in right">
 						<tr>
-				          <th scope="row">米兰诺丝绒炫金艺术套装</th>
-				          <td>Mark</td>
-				          <td>Otto</td>
-				          <td>@mdo</td>
-				          <td>@mdo</td>
-				        </tr>
-				        <tr><th colspan=5></th></tr>
+							<th colspan=6 style="color: #3c763d;">{{key}}</th>
+						</tr>
+						<tr ng-repeat="orderProduct in value">
+							<th scope="row">{{orderProduct.materialProduct.name}}</th>
+							<td>{{orderProduct.materialProduct.standard}}</td>
+							<td>{{orderProduct.materialProduct.price}}</td>
+							<td><input class="input-minier form-control" type="number"
+								ng-model="orderProduct.count" min="0"></td>
+							<td>{{orderProduct.materialProduct.price*orderProduct.count}}</td>
+							<td><input class="input-mini form-control" type="number"
+								ng-model="orderProduct.total"></td>
+						</tr>
+						<tr>
+							<th colspan=6></th>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-6" style="padding-right: 0px;">
+				<table class="table table-bordered">
+					<tbody>
+						<tr>
+							<th colspan=6>主要材料费金额总计(元)：{{getTotal()}}</th>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="col-md-6" style="padding-left: 0px;">
+				<table class="table table-bordered">
+					<tbody>
+						<tr>
+							<th colspan=6>辅助材料费金额总计(元)：{{orderLb.assistPrice}}</th>
+						</tr>
 					</tbody>
 				</table>
 			</div>
