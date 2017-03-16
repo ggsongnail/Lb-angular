@@ -12,6 +12,10 @@ td{
 	vertical-align: middle !important;
 	line-height: 30px !important;
 }
+th{
+	vertical-align: middle !important;
+	line-height:30px !important;
+}
 </style>
 <body>
 	<div class="container">
@@ -32,7 +36,7 @@ td{
 				<b>合同编号：{{orderLb.orderNo}}</b>
 			</div>
 			<div class="col-md-4">
-				<b>TM：{{orderLb.orderTm}}</b>
+				<b>预计开工日期：{{orderLb.expectedDate}}</b>
 			</div>
 			<div class="col-md-4">
 				<b>系统编号：{{orderLb.sysNo}}</b>
@@ -56,7 +60,7 @@ td{
 				<b>施工地址：{{orderLb.buildAddress}}</b>
 			</div>
 			<div class="col-md-4">
-				<b>区：{{orderLb.region}}</b>
+				<!-- <b>区：{{orderLb.region}}</b> -->
 			</div>
 			<div class="col-md-4">
 				<b>合同定金：{{orderLb.deposit}}</b>
@@ -73,14 +77,14 @@ td{
 							<th>包装</th>
 							<th>单价</th>
 							<th>数量</th>
-							<th>总价</th>
+							<!-- <th>总价</th> -->
 							<th>合计元</th>
 						</tr>
 					</thead>
 					<tbody ng-repeat="(key,value) in left">
-						<tr>
+						<!-- <tr>
 							<th colspan=6 style="color: #3c763d;">{{key}}</th>
-						</tr>
+						</tr> -->
 						<tr ng-repeat="orderProduct in value">
 							<th scope="row">{{orderProduct.materialProduct.name}}</th>
 							<td>{{orderProduct.materialProduct.standard}}</td>
@@ -88,8 +92,8 @@ td{
 							<td><input class="input-minier form-control" type="number"
 								ng-model="orderProduct.count" min="0"></td>
 							<td>{{orderProduct.materialProduct.price*orderProduct.count}}</td>
-							<td><input class="input-mini form-control" type="number"
-								ng-model="orderProduct.total"></td>
+							<!-- <td><input class="input-mini form-control" type="number"
+								ng-model="orderProduct.total"></td> -->
 						</tr>
 						<tr>
 							<th colspan=6></th>
@@ -105,14 +109,14 @@ td{
 							<th>包装</th>
 							<th>单价</th>
 							<th>数量</th>
-							<th>总价</th>
+							<!-- <th>总价</th> -->
 							<th>合计元</th>
 						</tr>
 					</thead>
 					<tbody ng-repeat="(key,value) in right">
-						<tr>
+						<!-- <tr>
 							<th colspan=6 style="color: #3c763d;">{{key}}</th>
-						</tr>
+						</tr> -->
 						<tr ng-repeat="orderProduct in value">
 							<th scope="row">{{orderProduct.materialProduct.name}}</th>
 							<td>{{orderProduct.materialProduct.standard}}</td>
@@ -120,8 +124,8 @@ td{
 							<td><input class="input-minier form-control" type="number"
 								ng-model="orderProduct.count" min="0"></td>
 							<td>{{orderProduct.materialProduct.price*orderProduct.count}}</td>
-							<td><input class="input-mini form-control" type="number"
-								ng-model="orderProduct.total"></td>
+							<!-- <td><input class="input-mini form-control" type="number"
+								ng-model="orderProduct.total"></td> -->
 						</tr>
 						<tr>
 							<th colspan=6></th>
@@ -135,7 +139,14 @@ td{
 				<table class="table table-bordered">
 					<tbody>
 						<tr>
-							<th colspan=6>主要材料费金额总计(元)：{{orderLb.mainPrice}}</th>
+							<th colspan=4>辅助材料费金额总计(元)：{{getTotal('7')}}</th>
+							<th colspan=2>
+								<div class="input-group">
+							      <div class="input-group-addon">实收</div>
+							     	 <input class="input-minier form-control" type="number" ng-model="orderLb.assistPriceReal" min="0">
+							      <div class="input-group-addon">元</div>
+							    </div>
+							</th>
 						</tr>
 					</tbody>
 				</table>
@@ -144,7 +155,19 @@ td{
 				<table class="table table-bordered">
 					<tbody>
 						<tr>
-							<th colspan=6>辅助材料费金额总计(元)：{{getTotal()}}</th>
+							<th colspan=6>客户确认：{{orderLb.customer}}</th>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="col-md-12" style="margin-top:-21px">
+				<table class="table table-bordered">
+					<tbody>
+						<tr>
+							<th colspan=3>客户专员：</th>
+							<th colspan=3>施工队长：</th>
+							<th colspan=3>录单文员：</th>
+							<th colspan=3>签约日期：</th>
 						</tr>
 					</tbody>
 				</table>

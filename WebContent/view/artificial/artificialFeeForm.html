@@ -1,0 +1,65 @@
+<body>
+	<div class="container">
+		<div class="col-md-12">
+			<div class="text-right">
+				<button class="btn btn-default" ng-click="back()">返回</button><br><br>
+			</div>
+		</div>
+		<br><br>
+		<div class="col-sm-4 col-sm-offset-4">
+			<form class="form-horizontal">
+				<input type="hidden" ng-model="artificialFee.id" value="{{artificialFee.id}}">
+				<input type="hidden" ng-model="artificialFee.version" value="{{artificialFee.version}}">
+				<div class="form-group">
+					<label for="inputEmail3" class="col-sm-4 control-label">字典类型</label>
+					<div class="col-sm-8">
+						<select class="form-control" ng-model="artificialFee.dictionaryClassify" 
+							ng-options="dictionaryClassify.name for dictionaryClassify in dictionaryClassifys track by dictionaryClassify.id"> 
+						</select>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="name" class="col-sm-4 control-label">名字</label>
+					<div class="col-sm-8">
+						<input type="text" class="form-control" ng-model="artificialFee.name">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="name" class="col-sm-4 control-label">类型</label>
+					<div class="col-sm-8">
+						<input type="text" class="form-control" ng-model="artificialFee.style">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="name" class="col-sm-4 control-label">单位</label>
+					<div class="col-sm-8">
+						<input type="text" class="form-control" ng-model="artificialFee.standard">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="name" class="col-sm-4 control-label">单价(元)</label>
+					<div class="col-sm-8">
+						<input type="number" class="form-control" ng-model="artificialFee.price">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="name" class="col-sm-4 control-label">最低收费(元)</label>
+					<div class="col-sm-8">
+						<input type="number" class="form-control" ng-model="artificialFee.lowFee">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="name" class="col-sm-4 control-label">备注</label>
+					<div class="col-sm-8">
+						<textarea rows="3"　class="form-control" ng-model="artificialFee.remark"></textarea>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-8 col-sm-offset-4">
+						<button ng-click="submit(artificialFee)" class="btn btn-warning">提交</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</body>
