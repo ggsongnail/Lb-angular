@@ -2,63 +2,186 @@
 <!--[if lt IE 7]>      <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html lang="en" ng-app="myApp" class="no-js"> <!--<![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="en" ng-app="myApp" class="no-js">
+<!--<![endif]-->
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>My AngularJS App</title>
-  <meta name="description" content="">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="app/bower_components/html5-boilerplate/dist/css/normalize.css">
-  <link rel="stylesheet" href="app/bower_components/bootstrap/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="app/app.css">
-  
-  <link rel="stylesheet" href="app/bower_components/html5-boilerplate/dist/css/main.css">
-  <link rel="stylesheet"; href="https://unpkg.com/ng-table@2.0.2/bundles/ng-table.min.css">
-  <script src="app/bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>立邦刷新</title>
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="app/bower_components/html5-boilerplate/dist/css/normalize.css">
+<link rel="stylesheet" href="app/bower_components/bootstrap/dist/css/bootstrap.min.css">
+
+<!-- Font Awesome -->
+<link href="app/bower_components/gentelella-master/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+<!-- NProgress -->
+<link href="app/bower_components/gentelella-master/nprogress/nprogress.css" rel="stylesheet">
+<!-- iCheck -->
+<link href="app/bower_components/gentelella-master/iCheck/skins/flat/green.css" rel="stylesheet">
+<link rel="stylesheet" href="app/bower_components/gentelella-master/build/css/custom.min.css">
+
+
+<link rel="stylesheet" href="app/app.css">
+<link rel="stylesheet" href="app/bower_components/html5-boilerplate/dist/css/main.css">
+<link rel="stylesheet" href="https://unpkg.com/ng-table@2.0.2/bundles/ng-table.min.css">
+<script src="app/bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
-<body>
-  <ul class="menu">
-    <li><a href="#!/viewlibang/dictionary/list" class="btn btn-primary">字典</a></li>
-    <li><a href="#!/viewlibang/dictionaryclassify/list" class="btn btn-primary">字典类型</a></li>
-    <li><a href="#!/viewlibang/materialclassify/list" class="btn btn-primary">材料类型</a></li>
-    <li><a href="#!/viewlibang/materialproduct/list" class="btn btn-primary">材料产品</a></li>
-    <li><a href="#!/viewlibang/artificialfee/list" class="btn btn-primary">人工收费</a></li>
-    
-    <li><a href="#!/viewlibang/orderlb/list" class="btn btn-primary">合同管理</a></li>
-    
-    <!-- <li><a href="#!/viewlibang/materialmainbill/2009848484/0" class="btn btn-primary">主要材料收费单</a></li>
-    <li><a href="#!/viewlibang/materialassistbill/2009848484/1" class="btn btn-primary">辅助材料收费单</a></li> -->
-  </ul>
+<body class="nav-md">
+	<div class="container body">
+		<div class="main_container">
+			<div class="col-md-3 left_col">
+				<div class="left_col scroll-view">
+					<div class="navbar nav_title" style="border: 0;">
+						<a href="index.html" class="site_title"><i class="fa fa-paw"></i>
+							<span>立邦刷新服务</span></a>
+					</div>
 
-  <!--[if lt IE 7]>
+					<div class="clearfix"></div>
+
+					<!-- menu profile quick info -->
+					<div class="profile clearfix">
+						<div class="profile_pic">
+							<img src="app/bower_components/gentelella-master/images/logo.png" alt="..." class="img-circle profile_img">
+						</div>
+						<div class="profile_info">
+							<span>欢迎！<h2>{{name}}</h2></span>
+							
+						</div>
+					</div>
+					<!-- /menu profile quick info -->
+
+					<br />
+
+					<!-- sidebar menu -->
+					<div id="sidebar-menu"
+						class="main_menu_side hidden-print main_menu">
+						<div class="menu_section">
+							<!-- <h3>General</h3> -->
+							<ul class="nav side-menu">
+								<li>
+									<a><i class="fa fa-book"></i> 类型管理 
+										<span class="fa fa-chevron-down"></span>
+									</a>
+									<ul class="nav child_menu">
+										<li><a href="#!/viewlibang/dictionary/list">字典类型</a></li>
+										<li><a href="#!/viewlibang/dictionaryclassify/list">字典明细</a></li>
+									</ul>
+								</li>
+								<li>
+									<a><i class="fa fa-shopping-basket"></i> 材料管理
+										<span class="fa fa-chevron-down"></span>
+									</a>
+									<ul class="nav child_menu">
+										<li><a href="#!/viewlibang/materialclassify/list">材料类型</a></li>
+										<li><a href="#!/viewlibang/materialproduct/list">材料产品</a></li>
+									</ul>
+								</li>
+								<li>
+									<a><i class="fa fa-group"></i> 人工管理 
+										<span class="fa fa-chevron-down"></span>
+									</a>
+									<ul class="nav child_menu">
+										<li><a href="#!/viewlibang/artificialfee/list">人工收费</a></li>
+									</ul>
+								</li>
+								<li>
+									<a><i class="fa fa-money"></i> 合同管理 
+										<span class="fa fa-chevron-down"></span>
+									</a>
+									<ul class="nav child_menu">
+										<li><a href="#!/viewlibang/orderlb/list">合同订单</a></li>
+									</ul>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<!-- /sidebar menu -->
+
+					<!-- /menu footer buttons -->
+					<div class="sidebar-footer hidden-small">
+						<a data-toggle="tooltip" data-placement="top" title="Settings">
+							<span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+						</a> <a data-toggle="tooltip" data-placement="top" title="FullScreen">
+							<span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
+						</a> <a data-toggle="tooltip" data-placement="top" title="Lock"> <span
+							class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
+						</a> <a data-toggle="tooltip" data-placement="top" title="Logout"
+							href="login.html"> <span class="glyphicon glyphicon-off"
+							aria-hidden="true"></span>
+						</a>
+					</div>
+					<!-- /menu footer buttons -->
+				</div>
+
+			</div>
+			<div class="top_nav">
+				<div class="nav_menu">
+					<nav>
+						<div class="nav toggle">
+							<a id="menu_toggle"><i class="fa fa-bars"></i></a>
+						</div>
+
+						<ul class="nav navbar-nav navbar-right" ng-controller="LoginCtrl">
+							<li class="">
+								<a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false"> 
+									<!-- <img src="images/img.jpg" alt=""> -->
+									<i class="fa fa-user"></i>
+									{{name}}
+									<span class=" fa fa-angle-down"></span>
+								</a>
+								<ul class="dropdown-menu dropdown-usermenu pull-right">
+									<li>
+										<a href="#" ng-click="logout()"><i class="fa fa-sign-out pull-right"></i> 退出登录</a>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</nav>
+				</div>
+
+			</div>
+			<div class="right_col"  role="main" ng-view>
+			
+			</div>
+			 <div class="clearfix"></div>
+			<footer style="margin-top: -54px;">
+			</footer>
+		</div>
+	</div>
+
+	<!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-  <![endif]-->
+    <![endif]-->
 
-  <div ng-view></div>
 
-  <div　style="position:absolute;bottom:0;left:0;right:0;margin:0 auto;text-align:center" class="hidden"><b>Angular seed app: v<span app-version></span></b></div>
+	<!-- <div　style="position:absolute;bottom:0;left:0;right:0;margin:0 auto;text-align:center" class="hidden"><b>Angular seed app: v<span app-version></span></b></div> -->
 
-  <!-- In production use:
-  <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
-  -->
+	<!-- In production use:<script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>-->
 
-  <script src="app/bower_components/jquery/dist/jquery.min.js"></script>
-  <script src="app/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-  <link href="app/bower_components/angular.DatetimePicker-master/jquery.datetimepicker.css" rel="stylesheet">
-  <script src="app/bower_components/angular.DatetimePicker-master/jquery.datetimepicker.js"></script>
-  
-  <script src="app/bower_components/angular/angular.js"></script>
-  <script src="app/bower_components/angular.DatetimePicker-master/angular.datetime.js"></script>
-  <script src="app/bower_components/angular-route/angular-route.js"></script>
-  <script src="https://unpkg.com/ng-table@2.0.2/bundles/ng-table.min.js"></script>
-  <script src="app/app.js"></script>
-  <script src="app/viewjs/view1/view1.js"></script>
-  <script src="app/viewjs/view2/view2.js"></script>
-  <script src="app/viewjs/view3/view3.js"></script>
-  <script src="app/viewjs/viewlibang/viewlibang.js"></script>
-  <script src="app/components/version/version.js"></script>
-  <script src="app/components/version/version-directive.js"></script>
-  <script src="app/components/version/interpolate-filter.js"></script>
+	<script src="app/bower_components/jquery/dist/jquery.min.js"></script>
+	<script src="app/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+	<link href="app/bower_components/angular.DatetimePicker-master/jquery.datetimepicker.css" rel="stylesheet">
+	<script src="app/bower_components/angular.DatetimePicker-master/jquery.datetimepicker.js"></script>
+
+	<script src="app/bower_components/angular/angular.js"></script>
+	<script src="app/bower_components/angular/angular-cookies.js"></script>
+	<script src="app/bower_components/angular.DatetimePicker-master/angular.datetime.js"></script>
+	<script src="app/bower_components/angular-route/angular-route.js"></script>
+	<script src="https://unpkg.com/ng-table@2.0.2/bundles/ng-table.min.js"></script>
+	<script src="app/app.js"></script>
+	<script src="app/viewjs/viewlibang/lbservice.js"></script>
+	<script src="app/viewjs/view1/view1.js"></script>
+	<script src="app/viewjs/view2/view2.js"></script>
+	<script src="app/viewjs/view3/view3.js"></script>
+	<script src="app/viewjs/viewlibang/viewlibang.js"></script>
+	<script src="app/components/version/version.js"></script>
+	<script src="app/components/version/version-directive.js"></script>
+	<script src="app/components/version/interpolate-filter.js"></script>
+	<!-- Custom Theme Scripts -->
+    <script src="app/bower_components/gentelella-master/build/js/custom.min.js"></script>
 </body>
 </html>

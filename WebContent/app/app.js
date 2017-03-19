@@ -2,15 +2,20 @@
 
 // Declare app level module which depends on views, and components
 angular.module('myApp', [
+  'ngCookies',	
   'ngRoute',
   'ngTable',
+  'ngCookies',
+  'myApp.session',
   'myApp.view1',
   'myApp.view2',
   'myApp.view3',
   'myApp.viewlibang',
   'myApp.version',
-]).
-config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
+]).config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
   $locationProvider.hashPrefix('!');
-  $routeProvider.otherwise({redirectTo: '/view1'});
-}]);
+  $routeProvider.otherwise({redirectTo: '/viewlibang/orderlb/list'});
+}]).run(function($rootScope) {
+    $rootScope.test = new Date();
+    $rootScope.name = 'admin';
+});
