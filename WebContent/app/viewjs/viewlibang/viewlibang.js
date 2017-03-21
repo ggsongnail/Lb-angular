@@ -1,5 +1,7 @@
 'use strict';
-
+/**
+ * IE9+才能正常跨域访问，以下的版本需要设置Internet安全设置，IE不支持new Header()
+ */
 angular.module('myApp.viewlibang', ['ngRoute','directives'])
 //每次访问连接都会请求ctrl，处理完函数的跳转亦是
 .config(['$routeProvider', function($routeProvider) {
@@ -102,16 +104,21 @@ angular.module('myApp.viewlibang', ['ngRoute','directives'])
 .controller('LoginCtrl', ['$scope','$http','$templateCache','NgTableParams','$location',
 	'$routeParams','$cookies', '$cookieStore','$rootScope', function($scope,$http,$templateCache,NgTableParams,$location,$routeParams,$cookies,$cookieStore, $rootScope) {
 	$scope.login = function(user){
-		var headers = new Headers();
-		headers.append('Content-Type','application/x-www-form-urlencoded');
-		$http.post('http://192.168.1.103:8081/Lb-spring/adminuser/login',user,{
+		//var headers = new Headers();
+		//headers.append('Content-Type','application/x-www-form-urlencoded');
+		/*$http.post('http://192.168.12.104:8081/Lb-spring/adminuser/login',user,{
 			headers:headers
+		})*/
+		$http({
+	          method: "post",
+	          data:user,
+	          url: "http://192.168.12.104:8081/Lb-spring/adminuser/login",
+	          headers: { "Content-Type": "application/json;text/plain" }
 		}).then(function(user){
 			if(!user.data){
 				alert("用户名密码错误");
 				return;
 			}
-			$scope.name = 'abc';	
 			//SessionStatus.isAnonymus = false;
 			//SessionStatus.token = "twxskdkdkjfdjkfjdkfdsllfsdkfs";
 			$cookies.put('isAnonymus',false);
@@ -121,7 +128,7 @@ angular.module('myApp.viewlibang', ['ngRoute','directives'])
 			$location.path("/viewlibang/orderlb/list");
 			
 		},function(){
-			console.log('login fail');
+			//console.log('login fail');
 		});
 	}
 	
@@ -141,10 +148,10 @@ angular.module('myApp.viewlibang', ['ngRoute','directives'])
 	if(url.indexOf('list')>-1){
 		$http({
 			method : 'JSONP',
-			url : 'http://192.168.1.103:8081/Lb-spring/dictionary/list/json?callback=JSON_CALLBACK',
+			url : 'http://192.168.12.104:8081/Lb-spring/dictionary/list/json?callback=JSON_CALLBACK',
 			//cache : $templateCache
 		}).then(function successCallback(response) {
-			//console.log("success");
+			////console.log("success");
 			$scope.now = new Date();
 			$scope.tableParams = new NgTableParams({count: 15}, { counts: [15, 20, 30],dataset: response.data});
 			
@@ -154,10 +161,10 @@ angular.module('myApp.viewlibang', ['ngRoute','directives'])
 	
 	//Ｕpdate页面
 	if(url.indexOf('update')>-1){
-		console.log("into update");
+		//console.log("into update");
 		$http({
 			method : 'JSONP',
-			url : 'http://192.168.1.103:8081/Lb-spring/dictionary/get/'+$routeParams.id+'?callback=JSON_CALLBACK',
+			url : 'http://192.168.12.104:8081/Lb-spring/dictionary/get/'+$routeParams.id+'?callback=JSON_CALLBACK',
 			//cache : $templateCache
 		}).then(function successCallback(response) {
 			$scope.dictionary = response.data;
@@ -168,15 +175,21 @@ angular.module('myApp.viewlibang', ['ngRoute','directives'])
 		$location.path("/viewlibang/dictionary/list")
 	}
 	$scope.submit = function(dictionary){
-		var headers = new Headers();
-		headers.append('Content-Type','application/x-www-form-urlencoded');
-		$http.post('http://192.168.1.103:8081/Lb-spring/dictionary/save',dictionary,{
+		//var headers = new Headers();
+		//headers.append('Content-Type','application/x-www-form-urlencoded');
+		/*$http.post('http://192.168.12.104:8081/Lb-spring/dictionary/save',dictionary,{
 			headers:headers
+		})*/
+		$http({
+	          method: "post",
+	          data:dictionary,
+	          url: "http://192.168.12.104:8081/Lb-spring/dictionary/save",
+	          headers: { "Content-Type": "application/json;text/plain" }
 		}).then(function(data){
-			console.log(data);
+			//console.log(data);
 			$location.path("/viewlibang/dictionary/list")
 		},function(){
-			console.log('create dictionary failed');
+			//console.log('create dictionary failed');
 		});
 	}
 }])
@@ -187,10 +200,10 @@ angular.module('myApp.viewlibang', ['ngRoute','directives'])
 	if(url.indexOf('list')>-1){
 		$http({
 			method : 'JSONP',
-			url : 'http://192.168.1.103:8081/Lb-spring/dictionaryclassify/list/json?callback=JSON_CALLBACK',
+			url : 'http://192.168.12.104:8081/Lb-spring/dictionaryclassify/list/json?callback=JSON_CALLBACK',
 			//cache : $templateCache
 		}).then(function successCallback(response) {
-			//console.log("success");
+			////console.log("success");
 			$scope.now = new Date();
 			$scope.tableParams = new NgTableParams({count: 15}, { counts: [15, 20, 30],dataset: response.data});
 			
@@ -201,7 +214,7 @@ angular.module('myApp.viewlibang', ['ngRoute','directives'])
 	if(url.indexOf('create')>-1){
 		$http({
 			method : 'JSONP',
-			url : 'http://192.168.1.103:8081/Lb-spring/dictionary/list/json?callback=JSON_CALLBACK',
+			url : 'http://192.168.12.104:8081/Lb-spring/dictionary/list/json?callback=JSON_CALLBACK',
 			//cache : $templateCache
 		}).then(function successCallback(response) {
 			$scope.dictionarys = response.data;
@@ -210,10 +223,10 @@ angular.module('myApp.viewlibang', ['ngRoute','directives'])
 	}
 	//Ｕpdate页面
 	if(url.indexOf('update')>-1){
-		console.log("into update");
+		//console.log("into update");
 		$http({
 			method : 'JSONP',
-			url : 'http://192.168.1.103:8081/Lb-spring/dictionaryclassify/get/'+$routeParams.id+'?callback=JSON_CALLBACK',
+			url : 'http://192.168.12.104:8081/Lb-spring/dictionaryclassify/get/'+$routeParams.id+'?callback=JSON_CALLBACK',
 			//cache : $templateCache
 		}).then(function successCallback(response) {
 			$scope.dictionaryClassify = response.data.dictionaryClassify;
@@ -227,15 +240,21 @@ angular.module('myApp.viewlibang', ['ngRoute','directives'])
 		$location.path("/viewlibang/dictionaryclassify/list")
 	}
 	$scope.submit = function(dictionaryClassify){
-		var headers = new Headers();
-		headers.append('Content-Type','application/x-www-form-urlencoded');
-		$http.post('http://192.168.1.103:8081/Lb-spring/dictionaryclassify/save',dictionaryClassify,{
+		//var headers = new Headers();
+		//headers.append('Content-Type','application/x-www-form-urlencoded');
+		/*$http.post('http://192.168.12.104:8081/Lb-spring/dictionaryclassify/save',dictionaryClassify,{
 			headers:headers
+		})*/
+		$http({
+	          method: "post",
+	          data:dictionaryClassify,
+	          url: "http://192.168.12.104:8081/Lb-spring/dictionaryclassify/save",
+	          headers: { "Content-Type": "application/json;text/plain" }
 		}).then(function(data){
-			console.log(data);
+			//console.log(data);
 			$location.path("/viewlibang/dictionaryclassify/list")
 		},function(){
-			console.log('create dictionaryClassify failed');
+			//console.log('create dictionaryClassify failed');
 		});
 	}
 }])
@@ -246,10 +265,10 @@ angular.module('myApp.viewlibang', ['ngRoute','directives'])
 	if(url.indexOf('list')>-1){
 		$http({
 			method : 'JSONP',
-			url : 'http://192.168.1.103:8081/Lb-spring/materialclassify/list/json?callback=JSON_CALLBACK',
+			url : 'http://192.168.12.104:8081/Lb-spring/materialclassify/list/json?callback=JSON_CALLBACK',
 			//cache : $templateCache
 		}).then(function successCallback(response) {
-			//console.log("success");
+			////console.log("success");
 			$scope.now = new Date();
 			$scope.tableParams = new NgTableParams({count: 15}, { counts: [15, 20, 30],dataset: response.data});
 			
@@ -260,7 +279,7 @@ angular.module('myApp.viewlibang', ['ngRoute','directives'])
 	if(url.indexOf('create')>-1){
 		$http({
 			method : 'JSONP',
-			url : 'http://192.168.1.103:8081/Lb-spring/dictionaryclassify/list/json/1?callback=JSON_CALLBACK',
+			url : 'http://192.168.12.104:8081/Lb-spring/dictionaryclassify/list/json/1?callback=JSON_CALLBACK',
 			//cache : $templateCache
 		}).then(function successCallback(response) {
 			$scope.dictionaryClassifys = response.data;
@@ -269,10 +288,10 @@ angular.module('myApp.viewlibang', ['ngRoute','directives'])
 	}
 	//Ｕpdate页面
 	if(url.indexOf('update')>-1){
-		console.log("into update");
+		//console.log("into update");
 		$http({
 			method : 'JSONP',
-			url : 'http://192.168.1.103:8081/Lb-spring/materialclassify/get/'+$routeParams.id+'?callback=JSON_CALLBACK',
+			url : 'http://192.168.12.104:8081/Lb-spring/materialclassify/get/'+$routeParams.id+'?callback=JSON_CALLBACK',
 			//cache : $templateCache
 		}).then(function successCallback(response) {
 			$scope.materialClassify = response.data.materialClassify;
@@ -285,16 +304,22 @@ angular.module('myApp.viewlibang', ['ngRoute','directives'])
 	$scope.back = function(){
 		$location.path("/viewlibang/materialclassify/list")
 	}
-	$scope.submit = function(dictionaryClassify){
-		var headers = new Headers();
-		headers.append('Content-Type','application/x-www-form-urlencoded');
-		$http.post('http://192.168.1.103:8081/Lb-spring/materialclassify/save',dictionaryClassify,{
+	$scope.submit = function(materialClassify){
+		//var headers = new Headers();
+		//headers.append('Content-Type','application/x-www-form-urlencoded');
+		/*$http.post('http://192.168.12.104:8081/Lb-spring/materialclassify/save',materialClassify,{
 			headers:headers
+		})*/
+		$http({
+	          method: "post",
+	          data:materialClassify,
+	          url: "http://192.168.12.104:8081/Lb-spring/materialclassify/save",
+	          headers: { "Content-Type": "application/json;text/plain" }
 		}).then(function(data){
-			console.log(data);
+			//console.log(data);
 			$location.path("/viewlibang/materialclassify/list")
 		},function(){
-			console.log('create materialclassify failed');
+			//console.log('create materialclassify failed');
 		});
 	}
 }])
@@ -305,10 +330,10 @@ angular.module('myApp.viewlibang', ['ngRoute','directives'])
 	if(url.indexOf('list')>-1){
 		$http({
 			method : 'JSONP',
-			url : 'http://192.168.1.103:8081/Lb-spring/materialproduct/list/json?callback=JSON_CALLBACK',
+			url : 'http://192.168.12.104:8081/Lb-spring/materialproduct/list/json?callback=JSON_CALLBACK',
 			//cache : $templateCache
 		}).then(function successCallback(response) {
-			//console.log("success");
+			////console.log("success");
 			$scope.now = new Date();
 			$scope.tableParams = new NgTableParams({count: 15}, { counts: [15, 20, 30],dataset: response.data});
 			
@@ -319,7 +344,7 @@ angular.module('myApp.viewlibang', ['ngRoute','directives'])
 	if(url.indexOf('create')>-1){
 		$http({
 			method : 'JSONP',
-			url : 'http://192.168.1.103:8081/Lb-spring/materialclassify/list/json?callback=JSON_CALLBACK',
+			url : 'http://192.168.12.104:8081/Lb-spring/materialclassify/list/json?callback=JSON_CALLBACK',
 			//cache : $templateCache
 		}).then(function successCallback(response) {
 			$scope.materialClassifys = response.data;
@@ -328,10 +353,10 @@ angular.module('myApp.viewlibang', ['ngRoute','directives'])
 	}
 	//Ｕpdate页面
 	if(url.indexOf('update')>-1){
-		console.log("into update");
+		//console.log("into update");
 		$http({
 			method : 'JSONP',
-			url : 'http://192.168.1.103:8081/Lb-spring/materialproduct/get/'+$routeParams.id+'?callback=JSON_CALLBACK',
+			url : 'http://192.168.12.104:8081/Lb-spring/materialproduct/get/'+$routeParams.id+'?callback=JSON_CALLBACK',
 			//cache : $templateCache
 		}).then(function successCallback(response) {
 			$scope.materialProduct = response.data.materialProduct;
@@ -344,16 +369,22 @@ angular.module('myApp.viewlibang', ['ngRoute','directives'])
 	$scope.back = function(){
 		$location.path("/viewlibang/materialproduct/list")
 	}
-	$scope.submit = function(dictionaryClassify){
-		var headers = new Headers();
-		headers.append('Content-Type','application/x-www-form-urlencoded');
-		$http.post('http://192.168.1.103:8081/Lb-spring/materialproduct/save',dictionaryClassify,{
+	$scope.submit = function(materialProduct){
+		//var headers = new Headers();
+		//headers.append('Content-Type','application/x-www-form-urlencoded');
+		/*$http.post('http://192.168.12.104:8081/Lb-spring/materialproduct/save',materialProduct,{
 			headers:headers
+		})*/
+		$http({
+	          method: "post",
+	          data:materialProduct,
+	          url: "http://192.168.12.104:8081/Lb-spring/materialproduct/save",
+	          headers: { "Content-Type": "application/json;text/plain" }
 		}).then(function(data){
-			console.log(data);
+			//console.log(data);
 			$location.path("/viewlibang/materialproduct/list")
 		},function(){
-			console.log('create materialproduct failed');
+			//console.log('create materialproduct failed');
 		});
 	}
 }])
@@ -366,10 +397,10 @@ angular.module('myApp.viewlibang', ['ngRoute','directives'])
 	if(url.indexOf('list')>-1){
 		$http({
 			method : 'JSONP',
-			url : 'http://192.168.1.103:8081/Lb-spring/artificialfee/list/json?callback=JSON_CALLBACK',
+			url : 'http://192.168.12.104:8081/Lb-spring/artificialfee/list/json?callback=JSON_CALLBACK',
 			//cache : $templateCache
 		}).then(function successCallback(response) {
-			//console.log("success");
+			////console.log("success");
 			$scope.now = new Date();
 			$scope.tableParams = new NgTableParams({count: 15}, { counts: [15, 20, 30],dataset: response.data});
 			
@@ -380,7 +411,7 @@ angular.module('myApp.viewlibang', ['ngRoute','directives'])
 	if(url.indexOf('create')>-1){
 		$http({
 			method : 'JSONP',
-			url : 'http://192.168.1.103:8081/Lb-spring/dictionaryclassify/list/json/4?callback=JSON_CALLBACK',
+			url : 'http://192.168.12.104:8081/Lb-spring/dictionaryclassify/list/json/4?callback=JSON_CALLBACK',
 			//cache : $templateCache
 		}).then(function successCallback(response) {
 			$scope.dictionaryClassifys = response.data;
@@ -391,7 +422,7 @@ angular.module('myApp.viewlibang', ['ngRoute','directives'])
 	if(url.indexOf('update')>-1){
 		$http({
 			method : 'JSONP',
-			url : 'http://192.168.1.103:8081/Lb-spring/artificialfee/get/'+id+'?callback=JSON_CALLBACK',
+			url : 'http://192.168.12.104:8081/Lb-spring/artificialfee/get/'+id+'?callback=JSON_CALLBACK',
 			//cache : $templateCache
 		}).then(function successCallback(response) {
 			$scope.artificialFee = response.data.artificialFee;
@@ -406,14 +437,20 @@ angular.module('myApp.viewlibang', ['ngRoute','directives'])
 	}
 	$scope.submit = function(artificialFee){
 		
-		var headers = new Headers();
-		headers.append('Content-Type','application/x-www-form-urlencoded');
-		$http.post('http://192.168.1.103:8081/Lb-spring/artificialfee/save',artificialFee,{
+		//var headers = new Headers();
+		//headers.append('Content-Type','application/x-www-form-urlencoded');
+		/*$http.post('http://192.168.12.104:8081/Lb-spring/artificialfee/save',artificialFee,{
 			headers:headers
+		})*/
+		$http({
+	          method: "post",
+	          data:artificialFee,
+	          url: "http://192.168.12.104:8081/Lb-spring/artificialfee/save",
+	          headers: { "Content-Type": "application/json;text/plain" }
 		}).then(function(data){
 			$location.path("/viewlibang/artificialfee/list")
 		},function(){
-			console.log('create artificialfee failed');
+			//console.log('create artificialfee failed');
 		});
 	}
 }])
@@ -423,10 +460,10 @@ angular.module('myApp.viewlibang', ['ngRoute','directives'])
 	var url = $location.url();
 	//Ｕpdate页面
 	if(url.indexOf('update')>-1){
-		console.log("into update");
+		//console.log("into update");
 		$http({
 			method : 'JSONP',
-			url : 'http://192.168.1.103:8081/Lb-spring/orderlb/get/'+$routeParams.id+'?callback=JSON_CALLBACK',
+			url : 'http://192.168.12.104:8081/Lb-spring/orderlb/get/'+$routeParams.id+'?callback=JSON_CALLBACK',
 			//cache : $templateCache
 		}).then(function successCallback(response) {
 			$scope.order = response.data;
@@ -439,15 +476,21 @@ angular.module('myApp.viewlibang', ['ngRoute','directives'])
 		$location.path("/viewlibang/orderlb/list")
 	}
 	$scope.submit = function(order){
-		console.log(angular.toJson(order));
-		var headers = new Headers();
-		headers.append('Content-Type','application/x-www-form-urlencoded');
-		$http.post('http://192.168.1.103:8081/Lb-spring/orderlb/save',order,{
+		//console.log(angular.toJson(order));
+		//var headers = new Headers();
+		//headers.append('Content-Type','application/x-www-form-urlencoded');
+		/*$http.post('http://192.168.12.104:8081/Lb-spring/orderlb/save',order,{
 			headers:headers
+		})*/
+		$http({
+	          method: "post",
+	          data:order,
+	          url: "http://192.168.12.104:8081/Lb-spring/orderlb/save",
+	          headers: { "Content-Type": "application/json;text/plain" }
 		}).then(function(data){
 			$location.path("/viewlibang/orderlb/list")
 		},function(){
-			console.log('update orderlb failed');
+			//console.log('update orderlb failed');
 		});
 	}
 	$scope.search = function(orderSE){
@@ -462,18 +505,27 @@ angular.module('myApp.viewlibang', ['ngRoute','directives'])
 		var params= {};
 		params["params"]=searchJson;
 		
-		console.log(searchJson);*/
-		var headers = new Headers();
-		headers.append('Content-Type','application/x-www-form-urlencoded');
+		//console.log(searchJson);*/
+		//var headers = new Headers();
+		//headers.append('Content-Type','application/x-www-form-urlencoded');
+		//console.log(headers);
 		/*$http({
 			method : 'JSONP',
-			url : 'http://192.168.1.103:8081/Lb-spring/orderlb/list/json?callback=JSON_CALLBACK',
+			url : 'http://192.168.12.104:8081/Lb-spring/orderlb/list/json?callback=JSON_CALLBACK',
 			params:orderSE
 			//cache : $templateCache
-		})*/$http.post('http://192.168.1.103:8081/Lb-spring/orderlb/list/json',orderSE,{
+		})*/
+		
+		/*$http.post('http://192.168.12.104:8081/Lb-spring/orderlb/list/json',orderSE,{
 			headers:headers
+		})*/
+		$http({
+          method: "post",
+          data:orderSE,//Form Data = {"id":1,"value":"hello"}
+          url: "http://192.168.12.104:8081/Lb-spring/orderlb/list/json",
+          headers: { "Content-Type": "application/json;text/plain" }
 		}).then(function successCallback(response) {
-			//console.log("success");
+			////console.log("success");
 			$scope.now = new Date();
 			$scope.tableParams = new NgTableParams({count: 15}, { counts: [15, 20, 30],dataset: response.data});
 			
@@ -485,10 +537,10 @@ angular.module('myApp.viewlibang', ['ngRoute','directives'])
 		$scope.search();
 		/*$http({
 			method : 'JSONP',
-			url : 'http://192.168.1.103:8081/Lb-spring/orderlb/list/json?callback=JSON_CALLBACK',
+			url : 'http://192.168.12.104:8081/Lb-spring/orderlb/list/json?callback=JSON_CALLBACK',
 			//cache : $templateCache
 		}).then(function successCallback(response) {
-			//console.log("success");
+			////console.log("success");
 			$scope.now = new Date();
 			$scope.tableParams = new NgTableParams({count: 15}, { counts: [15, 20, 30],dataset: response.data});
 			
@@ -550,21 +602,27 @@ angular.module('myApp.viewlibang', ['ngRoute','directives'])
 				message.push($scope.right[r][rr]);
 			}
 		}
-		//console.log(angular.toJson(message));
-		var headers = new Headers();
-		headers.append('Content-Type','application/x-www-form-urlencoded');
-		$http.post('http://192.168.1.103:8081/Lb-spring/orderproduct/bill/save',message,{
+		////console.log(angular.toJson(message));
+		//var headers = new Headers();
+		//headers.append('Content-Type','application/x-www-form-urlencoded');
+		/*$http.post('http://192.168.12.104:8081/Lb-spring/orderproduct/bill/save',message,{
 			headers:headers
+		})*/
+		$http({
+	          method: "post",
+	          data:message,
+	          url: "http://192.168.12.104:8081/Lb-spring/orderproduct/bill/save",
+	          headers: { "Content-Type": "application/json;text/plain" }
 		}).then(function(data){
-			console.log(data);
+			//console.log(data);
 			$location.path('/viewlibang/orderlb/list');
 		},function(){
-			console.log('create orderproduct failed');
+			//console.log('create orderproduct failed');
 		});
 	};
 	$http({
 		method : 'JSONP',
-		url : 'http://192.168.1.103:8081/Lb-spring/materialproduct/listformainbill/json/'+orderNo+'/'+type+'?callback=JSON_CALLBACK',
+		url : 'http://192.168.12.104:8081/Lb-spring/materialproduct/listformainbill/json/'+orderNo+'/'+type+'?callback=JSON_CALLBACK',
 		//cache : $templateCache
 	}).then(function successCallback(response) {
 		$scope.left = response.data.left;
@@ -631,19 +689,25 @@ angular.module('myApp.viewlibang', ['ngRoute','directives'])
 			$scope.others[l].orderLb = $scope.orderLb;
 			message.push($scope.others[l]);
 		}
-		var headers = new Headers();
-		headers.append('Content-Type','application/x-www-form-urlencoded');
-		$http.post('http://192.168.1.103:8081/Lb-spring/orderartificialfee/bill/save',message,{
+		//var headers = new Headers();
+		//headers.append('Content-Type','application/x-www-form-urlencoded');
+		/*$http.post('http://192.168.12.104:8081/Lb-spring/orderartificialfee/bill/save',message,{
 			headers:headers
+		})*/
+		$http({
+	          method: "post",
+	          data:message,
+	          url: "http://192.168.12.104:8081/Lb-spring/orderartificialfee/bill/save",
+	          headers: { "Content-Type": "application/json;text/plain" }
 		}).then(function(data){
 			$location.path('/viewlibang/orderlb/list');
 		},function(){
-			console.log('create orderartificial failed');
+			//console.log('create orderartificial failed');
 		});
 	};
 	$http({
 		method : 'JSONP',
-		url : 'http://192.168.1.103:8081/Lb-spring/artificialfee/listforbill/json/'+orderNo+'?callback=JSON_CALLBACK',
+		url : 'http://192.168.12.104:8081/Lb-spring/artificialfee/listforbill/json/'+orderNo+'?callback=JSON_CALLBACK',
 		//cache : $templateCache
 	}).then(function successCallback(response) {
 		$scope.latexs = response.data.latexs;

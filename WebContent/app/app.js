@@ -16,5 +16,5 @@ angular.module('myApp', [
   $routeProvider.otherwise({redirectTo: '/viewlibang/orderlb/list'});
 }]).run(function($rootScope) {
     $rootScope.test = new Date();
-    $rootScope.name = 'admin';
+    $rootScope.name = '';
 });

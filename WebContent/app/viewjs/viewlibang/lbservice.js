@@ -23,11 +23,10 @@ app.value('SessionStatus',{isAnonymus:true,token:"",userName:"Jony"});
 app.factory('sessionInjector', ['$location', '$cookies', '$cookieStore', function($location, $cookies, $cookieStore) {
     var sessionInjector = {
             request: function(config) {
+            	config.headers = config.headers || {};
                 if ($cookies.get('isAnonymus')=='false') {
-                	console.log('no Anonymus');
-                    config.headers['x-session-token'] = $cookies.get('token');
+                	config.headers['x-session-token'] = $cookies.get('token');
                 }else{
-                	console.log('is Anonymus');
                 	$location.path('/viewlibang/adminuser/login');
                 }
                 return config;

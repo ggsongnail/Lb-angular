@@ -2,15 +2,18 @@
 <!--[if lt IE 7]>      <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html lang="en" ng-app="myApp" class="no-js"> <!--<![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en" ng-app="myApp" class="no-js" class="ng-app:myApp" id="ng-app" xmlns:ng="http://angularjs.org"> <!--<![endif]-->
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <!-- Meta, title, CSS, favicons, etc. -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>Gentelella Alela! | </title>
+    <!--[if lt IE 9]>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.2pre/html5shiv.js"></script>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/json2/20121008/json2.js"></script>
+	<![endif]-->
+    <title>立邦刷新服务 | </title>
 
     <!-- Bootstrap -->
     <link href="app/bower_components/gentelella-master/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -31,7 +34,7 @@
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-              <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Gentelella Alela!</span></a>
+              <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>立邦刷新服务</span></a>
             </div>
 
             <div class="clearfix"></div>
@@ -118,7 +121,7 @@
 					<div class="nav toggle">
 						<a id="menu_toggle"><i class="fa fa-bars"></i></a>
 					</div>
-					<ul class="nav navbar-nav navbar-right">
+					<ul class="nav navbar-nav navbar-right" ng-controller="LoginCtrl">
 						<li class="">
 							<a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false"> 
 								<i class="fa fa-user"></i>&nbsp;&nbsp;{{name}} 
