@@ -1,0 +1,167 @@
+<style>
+.input-mini {
+	width: 80px;
+	height: 30px;
+}
+
+.input-minier {
+	width: 65px;
+	height: 30px;
+}
+td{
+	vertical-align: middle !important;
+	line-height: 20px !important;
+}
+th{
+	vertical-align: middle !important;
+	line-height:30px !important;
+}
+</style>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="text-right">
+				<button class="btn btn-warning" ng-click="submit()">提交</button>
+			</div>
+			
+			
+		</div>
+		<div class="row">
+			<div class="col-md-6 col-md-offset-3">
+				<h3 class="text-center">立邦刷新服务运营商阳光厨卫套餐收费单</h3>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4">
+				<b>合同编号：{{orderLb.orderNo}}</b>
+			</div>
+			<div class="col-md-4">
+				<b>预计开工日期：{{orderLb.expectedDate}}</b>
+			</div>
+			<div class="col-md-4">
+				<b>系统编号：{{orderLb.sysNo}}</b>
+			</div>
+		</div>
+		<hr />
+		<div class="row">
+			<div class="col-md-4">
+				<b>客户姓名：{{orderLb.customer}}</b>
+			</div>
+			<div class="col-md-4">
+				<b>联系电话：{{orderLb.tel}}</b>
+			</div>
+			<div class="col-md-4">
+				<b>小区名称：{{orderLb.uptownName}}</b>
+			</div>
+		</div>
+		<hr />
+		<div class="row">
+			<div class="col-md-4">
+				<b>施工地址：{{orderLb.buildAddress}}</b>
+			</div>
+			<div class="col-md-4">
+				<!-- <b>区：{{orderLb.region}}</b> -->
+			</div>
+			<div class="col-md-4">
+				<b>合同定金：{{orderLb.deposit}}</b>
+			</div>
+		</div>
+		<br />
+		<div class="row">
+			<div class="col-md-12">
+				<table id="ltable" class="table table-bordered"
+					　style="border-right: 2px solid #c1c1c1 !important;">
+					<thead>
+						<tr>
+							<th>序号</th>
+							<th colspan="2">服务内容+A4:IA4:I21</th>
+							<th>单位</th>
+							<th>单价元</th>
+							<th>最低收费元</th>
+							<th>备注</th>
+							<th>面积</th>
+							<th>合计元(系统)</th>
+							<th>合计元(手动)</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr><th colspan=8 style="color: #3c763d;">{{latexs[0].artificialFee.dictionaryClassify.name}}</th></tr>
+						<tr ng-repeat="latex in latexs">
+							<th scope="row">{{$index+1}}</th>
+							<td>{{latex.artificialFee.name}}</td>
+							<td>{{latex.artificialFee.style}}</td>
+							<td>{{latex.artificialFee.standard}}</td>
+							<td>{{latex.artificialFee.price}}</td>
+							<td>{{latex.artificialFee.lowFee}}</td>
+							<td  style="word-wrap:break-word;width:30%">{{latex.artificialFee.remark}}</td>
+							<td><input type="number" ng-model="latex.count" class="input-mini form-control"></td>
+							<td>{{latex.count*latex.artificialFee.price>latex.artificialFee.lowFee?latex.count*latex.artificialFee.price:latex.artificialFee.lowFee*(latex.count>0?1:0)}}</td>
+							<td><input type="number" ng-model="latex.totalReal" class="input-mini form-control"></td>
+						</tr>
+						<tr><th colspan=8 style="color: #3c763d;">{{woods[0].artificialFee.dictionaryClassify.name}}</th></tr>
+						<tr ng-repeat="wood in woods">
+							<th scope="row">{{$index+1}}</th>
+							<td>{{wood.artificialFee.name}}</td>
+							<td>{{wood.artificialFee.style}}</td>
+							<td>{{wood.artificialFee.standard}}</td>
+							<td>{{wood.artificialFee.price}}</td>
+							<td>{{wood.artificialFee.lowFee}}</td>
+							<td  style="word-wrap:break-word;width:30%">{{wood.artificialFee.remark}}</td>
+							<td><input type="number" ng-model="wood.count" class="input-mini form-control"></td>
+							<td>{{wood.count*wood.artificialFee.price>wood.artificialFee.lowFee?wood.count*wood.artificialFee.price:wood.artificialFee.lowFee*(wood.count>0?1:0)}}</td>
+							<td><input type="number" ng-model="wood.totalReal" class="input-mini form-control"></td>
+						</tr>
+						<tr><th colspan=8 style="color: #3c763d;">{{waters[0].artificialFee.dictionaryClassify.name}}</th></tr>
+						<tr ng-repeat="water in waters">
+							<th scope="row">{{$index+1}}</th>
+							<td>{{water.artificialFee.name}}</td>
+							<td>{{water.artificialFee.style}}</td>
+							<td>{{water.artificialFee.standard}}</td>
+							<td>{{water.artificialFee.price}}</td>
+							<td>{{water.artificialFee.lowFee}}</td>
+							<td  style="word-wrap:break-word;width:30%">{{water.artificialFee.remark}}</td>
+							<td><input type="number" ng-model="water.count" class="input-mini form-control"></td>
+							<td>{{water.count*water.artificialFee.price>water.artificialFee.lowFee?water.count*water.artificialFee.price:water.artificialFee.lowFee*(water.count>0?1:0)}}</td>
+							<td><input type="number" ng-model="water.totalReal" class="input-mini form-control"></td>
+						</tr>
+						<tr><th colspan=8 style="color: #3c763d;">{{basics[0].artificialFee.dictionaryClassify.name}}</th></tr>
+						<tr ng-repeat="basic in basics">
+							<th scope="row">{{$index+1}}</th>
+							<td>{{basic.artificialFee.name}}</td>
+							<td>{{basic.artificialFee.style}}</td>
+							<td>{{basic.artificialFee.standard}}</td>
+							<td>{{basic.artificialFee.price}}</td>
+							<td>{{basic.artificialFee.lowFee}}</td>
+							<td  style="word-wrap:break-word;width:30%">{{basic.artificialFee.remark}}</td>
+							<td><input type="number" ng-model="basic.count" class="input-mini form-control"></td>
+							<td>{{basic.count*basic.artificialFee.price>basic.artificialFee.lowFee?basic.count*basic.artificialFee.price:basic.artificialFee.lowFee*(basic.count>0?1:0)}}</td>
+							<td><input type="number" ng-model="basic.totalReal" class="input-mini form-control"></td>
+						</tr>
+						<tr><th colspan=8 style="color: #3c763d;">{{others[0].artificialFee.dictionaryClassify.name}}</th></tr>
+						<tr ng-repeat="other in others">
+							<th scope="row">{{$index+1}}</th>
+							<td>{{other.artificialFee.name}}</td>
+							<td>{{other.artificialFee.style}}</td>
+							<td>{{other.artificialFee.standard}}</td>
+							<td>{{other.artificialFee.price}}</td>
+							<td>{{other.artificialFee.lowFee}}</td>
+							<td  style="word-wrap:break-word;width:30%">{{other.artificialFee.remark}}</td>
+							<td><input type="number" ng-model="other.count" class="input-mini form-control"></td>
+							<td>{{other.count*other.artificialFee.price>other.artificialFee.lowFee?other.count*other.artificialFee.price:other.artificialFee.lowFee*(other.count>0?1:0)}}</td>
+							<td><input type="number" ng-model="other.totalReal" class="input-mini form-control"></td>
+						</tr>
+						<tr><th colspan="6">人工费总计：{{getTotal()}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;实收：{{totalRealPrice}}</th><th colspan="4"></th></tr>
+						<tr><th colspan="10">备注：竣工验收时,拆除遮蔽保护后做房屋基本的建筑垃圾清扫除尘工作,客户如有特别需求,可以帮助联系专业保洁</th></tr>
+						<tr>
+							<th colspan=2>客户专员：{{orderLb.customerCommissioner}}</th>
+							<th colspan=2>施工队长：{{orderLb.buildCaptain}}</th>
+							<th colspan=3>录单文员：XXX</th>
+							<th colspan=3>签约日期：{{orderLb.signingDate}}</th>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+

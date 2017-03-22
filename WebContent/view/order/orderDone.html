@@ -1,0 +1,122 @@
+<style>
+.input-mini {
+	width: 80px;
+	height: 30px;
+}
+
+.input-minier {
+	width: 65px;
+	height: 30px;
+}
+td{
+	vertical-align: middle !important;
+	line-height: 20px !important;
+}
+th{
+	vertical-align: middle !important;
+	line-height:30px !important;
+}
+</style>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="text-right">
+				<button class="btn btn-warning" ng-click="submit()">提交</button>
+			</div>
+			
+			
+		</div>
+		<div class="row">
+			<div class="col-md-6 col-md-offset-3">
+				<h3 class="text-center">立邦刷新服务竣工决算单</h3>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4">
+				<b>合同编号：{{orderLb.orderNo}}</b>
+			</div>
+			<div class="col-md-4">
+				<b>预计开工日期：{{orderLb.expectedDate}}</b>
+			</div>
+			<div class="col-md-4">
+				<b>系统编号：{{orderLb.sysNo}}</b>
+			</div>
+		</div>
+		<hr />
+		<div class="row">
+			<div class="col-md-4">
+				<b>客户姓名：{{orderLb.customer}}</b>
+			</div>
+			<div class="col-md-4">
+				<b>联系电话：{{orderLb.tel}}</b>
+			</div>
+			<div class="col-md-4">
+				<b>小区名称：{{orderLb.uptownName}}</b>
+			</div>
+		</div>
+		<hr />
+		<div class="row">
+			<div class="col-md-4">
+				<b>施工地址：{{orderLb.buildAddress}}</b>
+			</div>
+			<div class="col-md-4">
+				<!-- <b>区：{{orderLb.region}}</b> -->
+			</div>
+			<div class="col-md-4">
+				<b>合同定金：{{orderLb.deposit}}</b>
+			</div>
+		</div>
+		<br />
+	 	<!-- <tags-input ng-model="tags">
+        	<auto-complete source="loadTags($query)"></auto-complete>
+    	</tags-input> -->
+    	<form name="forma">
+    		<div class="row">
+	    		<div class="col-md-4"><input name="test" class="form-control" type="text" ng-trim="false" ng-model="confA[0]"/></div>
+	    		<div class="col-md-4"><input name="test" class="form-control" type="text" ng-trim="false" ng-model="confB[0]"/></div>
+	    		<div class="col-md-4"><input name="test" class="form-control" type="text" ng-trim="false" ng-model="confC[0]"/></div>
+	    		
+	    		<div class="col-md-4"><input name="test" class="form-control" type="text" ng-trim="false" ng-model="confA[1]"/></div>
+	    		<div class="col-md-4"><input name="test" class="form-control" type="text" ng-trim="false" ng-model="confB[1]"/></div>
+	    		<div class="col-md-4"><input name="test" class="form-control" type="text" ng-trim="false" ng-model="confC[1]"/></div>
+	    		
+	    		<div class="col-md-4"><input name="test" class="form-control" type="text" ng-trim="false" ng-model="confA[2]"/></div>
+	    		<div class="col-md-4"><input name="test" class="form-control" type="text" ng-trim="false" ng-model="confB[2]"/></div>
+	    		<div class="col-md-4"><input name="test" class="form-control" type="text" ng-trim="false" ng-model="confC[2]"/></div>
+    		</div>
+    		<button ng-click="show()">click</button>
+    	</form>
+		<div class="row">
+			<div class="col-md-12">
+				<table id="ltable" class="table table-bordered"
+					　style="border-right: 2px solid #c1c1c1 !important;">
+					<thead>
+						<tr>
+							<th>序号</th>
+							<th>服务项目</th>
+							<th>单位</th>
+							<th>单价元</th>
+							<th>最低收费元</th>
+							<th>备注</th>
+							<th>数量</th>
+							<th>合计元</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="orderSets in orderSetss">
+							<th scope="row">{{$index+1}}</th>
+							<td>{{orderSets.materialSets.name}}</td>
+							<td>{{orderSets.materialSets.standard}}</td>
+							<td>{{orderSets.materialSets.price}}</td>
+							<td>{{orderSets.materialSets.lowFee}}</td>
+							<td style="word-wrap:break-word;width:50%">{{orderSets.materialSets.remark}}</td>
+							<td><input type="number" ng-model="orderSets.count" class="input-mini form-control"></td>
+							<td>{{orderSets.count*orderSets.materialSets.price}}</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+

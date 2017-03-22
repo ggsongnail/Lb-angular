@@ -1,0 +1,76 @@
+<body>
+	<div class="container">
+		<div class="col-md-12">
+			<div class="text-right">
+				<button class="btn btn-default" ng-click="back()">返回</button><br><br>
+			</div>
+		</div>
+		<br><br>
+		<div class="col-sm-6 col-sm-offset-3">
+			<form class="form-horizontal">
+				<input type="hidden" ng-model="materialSets.id" value="{{materialSets.id}}">
+				<input type="hidden" ng-model="materialSets.version" value="{{materialSets.version}}">
+				<div class="form-group">
+					<label for="inputEmail3" class="col-sm-2 control-label">字典类型</label>
+					<div class="col-sm-4">
+						<select class="form-control" ng-model="materialSets.dictionaryClassify" 
+							ng-options="dictionaryClassify.name for dictionaryClassify in dictionaryClassifys track by dictionaryClassify.id"> 
+						</select>
+					</div>
+					<label for="name" class="col-sm-2 control-label">服务项目</label>
+					<div class="col-sm-4">
+						<input type="text" class="form-control" ng-model="materialSets.name">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="name" class="col-sm-2 control-label">单位</label>
+					<div class="col-sm-4">
+						<input type="text" class="form-control" ng-model="materialSets.standard">
+					</div>
+					
+					<label for="name" class="col-sm-2 control-label">单价元</label>
+					<div class="col-sm-4">
+						<input type="number" class="form-control" ng-model="materialSets.price">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="name" class="col-sm-2 control-label">最低收费</label>
+					<div class="col-sm-4">
+						<input type="number" class="form-control" ng-model="materialSets.lowFee">
+					</div>
+					<label for="name" class="col-sm-2 control-label">0-5㎡</label>
+					<div class="col-sm-4">
+						<input type="number" class="form-control" ng-model="materialSets.fiveFee">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="name" class="col-sm-2 control-label">6㎡-10㎡</label>
+					<div class="col-sm-4">
+						<input type="number" class="form-control" ng-model="materialSets.tenFee">
+					</div>
+					<label for="name" class="col-sm-2 control-label">11㎡-15㎡</label>
+					<div class="col-sm-4">
+						<input type="number" class="form-control" ng-model="materialSets.fifthFee">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="name" class="col-sm-2 control-label">16㎡-20㎡</label>
+					<div class="col-sm-4">
+						<input type="number" class="form-control" ng-model="materialSets.twthFee">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="name" class="col-sm-2 control-label">备注</label>
+					<div class="col-sm-10">
+						<textarea rows="4" class="form-control" ng-model="materialSets.remark"></textarea>
+					</div> 
+				</div>
+				<div class="form-group">
+					<div class="col-sm-6 col-sm-offset-6">
+						<button ng-click="submit(materialSets)" class="btn btn-warning">提交</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</body>

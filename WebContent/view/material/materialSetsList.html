@@ -1,0 +1,40 @@
+<body>
+	<div class="container">
+		<div class="col-md-12">
+			<div class="text-right">
+				<a class="btn btn-info" href="#!/viewlibang/materialsets/create">新增</a>
+			</div>
+			<br><br>
+		</div>
+		<div class="col-md-12">
+			<table ng-table="tableParams" class="table table-bordered">
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>服务项目</th>
+						<th>字典类型</th>
+						<th>单位</th>
+						<th>单价元</th>
+						<th>时间</th>
+						<th>编辑</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="materialSet in $data">
+						<td>{{ $index + 1 }}</td>
+						<td>{{materialSet.name}}</td>
+						<td>{{materialSet.dictionaryClassify.name}}</td>
+						<td>{{materialSet.standard}}</td>
+						<td>{{materialSet.price}}</td>
+						<td>{{(materialSet.updateDate||now) | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+						<td>
+							<!-- <button><a ng-href="#!/viewlibang/materialSet/update/{{materialSet.id}}">编辑</a></button>&nbsp;<button>删除</button> -->
+							<a class="btn btn-default" ng-href="#!/viewlibang/materialsets/update/{{materialSet.id}}">编辑</a>
+							<a class="btn btn-danger" ng-href="#!/viewlibang/materialsets/update/{{materialSet.id}}">删除</a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</body>
