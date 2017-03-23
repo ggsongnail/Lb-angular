@@ -19,12 +19,16 @@ th{
 </style>
 <body>
 	<div class="container">
-		<div class="row">
+    	<!-- <form name="form">
+    		
+    		<div id="jack"></div>
+    		<button ng-click="show()">click</button>
+    	</form>
+    	<label>{{logo.name}}</label> -->
+    	<div class="row">
 			<div class="text-right">
 				<button class="btn btn-warning" ng-click="submit()">提交</button>
 			</div>
-			
-			
 		</div>
 		<div class="row">
 			<div class="col-md-6 col-md-offset-3">
@@ -32,78 +36,100 @@ th{
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-md-4">
-				<b>合同编号：{{orderLb.orderNo}}</b>
-			</div>
-			<div class="col-md-4">
-				<b>预计开工日期：{{orderLb.expectedDate}}</b>
-			</div>
-			<div class="col-md-4">
-				<b>系统编号：{{orderLb.sysNo}}</b>
-			</div>
-		</div>
-		<hr />
-		<div class="row">
-			<div class="col-md-4">
-				<b>客户姓名：{{orderLb.customer}}</b>
-			</div>
-			<div class="col-md-4">
-				<b>联系电话：{{orderLb.tel}}</b>
-			</div>
-			<div class="col-md-4">
-				<b>小区名称：{{orderLb.uptownName}}</b>
-			</div>
-		</div>
-		<hr />
-		<div class="row">
-			<div class="col-md-4">
-				<b>施工地址：{{orderLb.buildAddress}}</b>
-			</div>
-			<div class="col-md-4">
-				<!-- <b>区：{{orderLb.region}}</b> -->
-			</div>
-			<div class="col-md-4">
-				<b>合同定金：{{orderLb.deposit}}</b>
-			</div>
-		</div>
-		<br />
-	 	<!-- <tags-input ng-model="tags">
-        	<auto-complete source="loadTags($query)"></auto-complete>
-    	</tags-input> -->
-    	<form name="form">
-    		<button input-dynamic value="0">fuck</button>
-    		<div id="jack"></div>
-    		<button ng-click="show()">click</button>
-    	</form>
-    	<label>{{logo}}</label>
-    	
-    	
-		<div class="row">
 			<div class="col-md-12">
-				<table id="ltable" class="table table-bordered"
-					　style="border-right: 2px solid #c1c1c1 !important;">
+				<table class="table table-bordered">
 					<thead>
-						<tr>
-							<th>序号</th>
-							<th>服务项目</th>
-							<th>单位</th>
-							<th>单价元</th>
-							<th>最低收费元</th>
-							<th>备注</th>
-							<th>数量</th>
-							<th>合计元</th>
-						</tr>
 					</thead>
 					<tbody>
-						<tr ng-repeat="orderSets in orderSetss">
-							<th scope="row">{{$index+1}}</th>
-							<td>{{orderSets.materialSets.name}}</td>
-							<td>{{orderSets.materialSets.standard}}</td>
-							<td>{{orderSets.materialSets.price}}</td>
-							<td>{{orderSets.materialSets.lowFee}}</td>
-							<td style="word-wrap:break-word;width:50%">{{orderSets.materialSets.remark}}</td>
-							<td><input type="number" ng-model="orderSets.count" class="input-mini form-control"></td>
-							<td>{{orderSets.count*orderSets.materialSets.price}}</td>
+						<tr>
+							<th>合同编号</th>
+							<td colspan=3>{{orderLb.orderNo}}</td>
+							<th>小区名称</th>
+							<td colspan=3>{{orderLb.uptownName}}</td>
+						</tr>
+						<tr>
+							<th>客户姓名</th>
+							<td colspan=3>{{orderLb.customer}}</td>
+							<th>联系电话</th>
+							<td colspan=3>{{orderLb.tel}}</td>
+						</tr>
+						<tr>
+							<th colspan=1>施工地址</th>
+							<td colspan=7>{{orderLb.buildAddress}}</td>
+						</tr>
+						<tr>
+							<th>客户专员</th>
+							<td colspan=3>{{orderLb.customerCommissioner}}</td>
+							<th>施工队长</th>
+							<td colspan=3>{{orderLb.buildCaptain}}</td>
+						</tr>
+					</tbody>
+						
+					<tbody>
+						<tr>
+							<th colspan=8>材料费变更：<button input-dynamic-material value="0">添加</button></th>
+						</tr>
+						<tr>
+							<th style="width:10%">－－</th>
+							<th style="width:40%">材料名称</th>
+							<th>规格</th>
+							<th>单价</th>
+							<th>增减数量(+/-)</th>
+							<th>金额增减(用+/-表示)</th>
+						</tr>
+						<!-- add history -->
+					</tbody>
+					<tbody>
+						<tr>
+							<th colspan=5 class="text-right">材料费变更合计:</th>
+							<th>¥{{getChangeMaterialFee()}}</th>
+						</tr>
+						<tr>
+							<th colspan=5 class="text-right">材料费预算金额:</th>
+							<th>¥</th>
+						</tr>
+						<tr>
+							<th colspan=5 class="text-right">材料费决算金额:</th>
+							<th>¥</th>
+						</tr>
+					</tbody>
+					<tbody>
+						<tr>
+							<th colspan=8>人工费变更：<button input-dynamic-man value="0">添加</button></th>
+						</tr>
+						<tr>
+							<th style="width:10%">－－</th>
+							<th style="width:40%">人工变更项目</th>
+							<th>规格</th>
+							<th>单价</th>
+							<th>增减数量(+/-)</th>
+							<th>金额增减(用+/-表示)</th>
+						</tr>
+						<!-- add history -->
+					</tbody>
+					<tbody>
+						<tr>
+							<th colspan=5 class="text-right">人工费变更合计:</th>
+							<th>¥{{getChangeManFee()}}</th>
+						</tr>
+						<tr>
+							<th colspan=5 class="text-right">人工费预算金额:</th>
+							<th>¥</th>
+						</tr>
+						<tr>
+							<th colspan=5 class="text-right">人工费决算金额:</th>
+							<th>¥</th>
+						</tr>
+					</tbody>
+					<tbody>
+						<tr><th colspan=6>管理费及税金：</th></tr>
+						<tr>
+							<th colspan=3>合同预算总金额(元):</th>
+							<th colspan=3>客户确认:</th>
+						</tr>
+						<tr>
+							<th colspan=3>合同决算总金额(元):</th>
+							<th colspan=3>竣工日期:</th>
 						</tr>
 					</tbody>
 				</table>

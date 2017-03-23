@@ -836,23 +836,41 @@ angular.module('myApp.viewlibang', ['ngRoute','directives'])
 	if(!$cookieStore.get("products")){
 		
 	}
-	$scope.confA = [];
-	$scope.confB = [];
-	$scope.confC = [];
-	$scope.a = 0;
-	$scope.b = 1;
-	$scope.c = 2;
-	$scope.label = "Please click";
-    $scope.doSomething = function(){
-      $scope.message = "Clicked!";
-    };
-	$scope.show = function(){
-		console.log( $scope.confA);
-		console.log( $scope.confB);
-		console.log( $scope.confC);
-		//console.log($scope.abc);
+	$scope.confMaterial = [];
+	$scope.confMan = [];
+	
+	$scope.del = function(){
+		alert('del');
+		angular.elment.remove();
 	}
-	$scope.products = [{name:"apple",age:3},{name:"pear",age:4}];
+	$scope.selectMaterialChange = function (data,index) {  
+		$scope.confMaterial[index].standard = data.standard;
+		$scope.confMaterial[index].price = data.price;
+	} 
+	
+	$scope.selectManChange = function (data,index) {  
+		$scope.confMan[index].standard = data.standard;
+		$scope.confMan[index].price = data.price;
+	}
+	
+	$scope.getChangeMaterialFee = function(){
+		var total = 0;
+		for(var m in $scope.confMaterial){
+			total += $scope.confMaterial[m].price*$scope.confMaterial[m].count;
+		}
+		return total;
+	}
+	
+	$scope.getChangeManFee = function(){
+		var total = 0;
+		for(var m in $scope.confMan){
+			total += $scope.confMan[m].price*$scope.confMan[m].count;
+		}
+		return total;
+	}
+	
+	$scope.products = [{id:1,name:"apple",standard:"5l",price:68},{id:2,name:"pear",standard:"6l",price:98}];
+	$scope.mans = [{id:1,name:"杀人",standard:"5l",price:68},{id:2,name:"放火",standard:"6l",price:98}];
 }]);
 
 
