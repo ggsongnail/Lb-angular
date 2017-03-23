@@ -842,20 +842,17 @@ angular.module('myApp.viewlibang', ['ngRoute','directives'])
 	$scope.a = 0;
 	$scope.b = 1;
 	$scope.c = 2;
+	$scope.label = "Please click";
+    $scope.doSomething = function(){
+      $scope.message = "Clicked!";
+    };
 	$scope.show = function(){
 		console.log( $scope.confA);
 		console.log( $scope.confB);
 		console.log( $scope.confC);
+		//console.log($scope.abc);
 	}
-	/*$http({
-		method : 'JSONP',
-		url : 'http://192.168.1.103:8081/Lb-spring/orderlb/setsbill/json/'+orderId+'/'+type+'?callback=JSON_CALLBACK',
-		//cache : $templateCache
-	}).then(function successCallback(response) {
-		$scope.orderSetss = response.data.orderSetss;
-		$scope.orderLb = response.data.orderLb;
-	}, function errorCallback(response) {
-	});*/
+	$scope.products = [{name:"apple",age:3},{name:"pear",age:4}];
 }]);
 
 

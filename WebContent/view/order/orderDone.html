@@ -70,22 +70,14 @@ th{
 	 	<!-- <tags-input ng-model="tags">
         	<auto-complete source="loadTags($query)"></auto-complete>
     	</tags-input> -->
-    	<form name="forma">
-    		<div class="row">
-	    		<div class="col-md-4"><input name="test" class="form-control" type="text" ng-trim="false" ng-model="confA[0]"/></div>
-	    		<div class="col-md-4"><input name="test" class="form-control" type="text" ng-trim="false" ng-model="confB[0]"/></div>
-	    		<div class="col-md-4"><input name="test" class="form-control" type="text" ng-trim="false" ng-model="confC[0]"/></div>
-	    		
-	    		<div class="col-md-4"><input name="test" class="form-control" type="text" ng-trim="false" ng-model="confA[1]"/></div>
-	    		<div class="col-md-4"><input name="test" class="form-control" type="text" ng-trim="false" ng-model="confB[1]"/></div>
-	    		<div class="col-md-4"><input name="test" class="form-control" type="text" ng-trim="false" ng-model="confC[1]"/></div>
-	    		
-	    		<div class="col-md-4"><input name="test" class="form-control" type="text" ng-trim="false" ng-model="confA[2]"/></div>
-	    		<div class="col-md-4"><input name="test" class="form-control" type="text" ng-trim="false" ng-model="confB[2]"/></div>
-	    		<div class="col-md-4"><input name="test" class="form-control" type="text" ng-trim="false" ng-model="confC[2]"/></div>
-    		</div>
+    	<form name="form">
+    		<button input-dynamic value="0">fuck</button>
+    		<div id="jack"></div>
     		<button ng-click="show()">click</button>
     	</form>
+    	<label>{{logo}}</label>
+    	
+    	
 		<div class="row">
 			<div class="col-md-12">
 				<table id="ltable" class="table table-bordered"

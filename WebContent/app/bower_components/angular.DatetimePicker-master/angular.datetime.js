@@ -79,4 +79,21 @@ return {
             });*/
         }
     };
-}]);
+}]).directive("inputDynamic", function($compile){
+	return{
+        link: function(scope, element, attrs){
+            element.on("click", function() {
+            	var index = attrs.value;
+            	var template = '<div class="col-md-4"><input name="test" class="form-control" type="text" ng-trim="false" ng-model="confA['+index+'].name"/></div>'+
+    	    				   '<div class="col-md-4"><input name="test" class="form-control" type="text" ng-trim="false" ng-model="confA['+index+'].sex"/></div>'+
+    	    		           '<div class="col-md-4"><input name="test" class="form-control" type="text" ng-trim="false" ng-model="confA['+index+'].age"/></div>';
+            	attrs.value = parseInt(attrs.value) + 1;
+                scope.$apply(function() {
+                    var content = $compile(template)(scope);
+                    element.next().append(content);
+                })
+            });
+        }
+    }
+});
+
