@@ -67,7 +67,7 @@ th{
 						
 					<tbody>
 						<tr>
-							<th colspan=8>材料费变更：<button input-dynamic-material value="0">添加</button></th>
+							<th colspan=8>材料费变更：<button ng-click="del()">click</button><button input-dynamic-material value="{{materialIndex}}">添加</button><input type="text" ng-model="materialIndex"/></th>
 						</tr>
 						<tr>
 							<th style="width:10%">－－</th>
@@ -78,11 +78,23 @@ th{
 							<th>金额增减(用+/-表示)</th>
 						</tr>
 						<!-- add history -->
+						<tr ng-repeat="difMaterial in confMaterial">
+							<td><button id="materialDel" del-elment>删除</button></td>
+							<td>
+								<select ng-change="selectMaterialChange(difMaterial,{{$index}})" class="form-control" ng-model="difMaterial" 
+	       					   		ng-options="product.name for product in materials track by product.id">
+	       					   </select>
+	       					</td>
+ 	    				   	<td><input name="test" class="form-control" type="text" ng-trim="false" ng-model="difMaterial.standard"/></td>
+ 	    		           	<td><input name="test" class="form-control" type="number" ng-trim="false" ng-model="difMaterial.price"/></td>
+ 	    		           	<td><input name="test" class="form-control" type="number" ng-trim="false" ng-model="difMaterial.difCount"/></td>
+ 	    		           	<td><input name="test" class="form-control" type="number" ng-trim="false" ng-model="difMaterial.difTotal"/></td>
+						</tr>
 					</tbody>
 					<tbody>
 						<tr>
 							<th colspan=5 class="text-right">材料费变更合计:</th>
-							<th>¥{{getChangeMaterialFee()}}</th>
+							<th>¥{{getChangeMaterialDifFee()}}</th>
 						</tr>
 						<tr>
 							<th colspan=5 class="text-right">材料费预算金额:</th>
@@ -95,7 +107,7 @@ th{
 					</tbody>
 					<tbody>
 						<tr>
-							<th colspan=8>人工费变更：<button input-dynamic-man value="0">添加</button></th>
+							<th colspan=8>人工费变更：<button input-dynamic-man value="0">添加</button><input type="text" ng-model="manIndex"/></th>
 						</tr>
 						<tr>
 							<th style="width:10%">－－</th>

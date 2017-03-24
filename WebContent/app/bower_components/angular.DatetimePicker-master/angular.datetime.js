@@ -81,39 +81,48 @@ return {
     };
 }]).directive("inputDynamicMaterial", function($compile){
 	return{
-        link: function(scope, element, attrs){
-            element.on("click", function() {
-            	var index = attrs.value;
-            	
-            	var template = '<tr><td><button del-elment>删除</button></td><td><select ng-change="selectMaterialChange(confMaterial['+index+'].name,'+index+')" class="form-control" ng-model="confMaterial['+index+'].name" '+
-        					   		'ng-options="product.name for product in products track by product.id"> '+
+        link: function(scope, element, attrs,ctrl){
+            /*element.on("click", function() {
+            	var index = scope.materialIndex;//attrs.value;
+            	var template = '<tr><td><button id="materialDel" del-elment>删除</button></td><td><select ng-change="selectMaterialChange(confMaterial['+index+'],'+index+')" class="form-control" ng-model="confMaterial['+index+']" '+
+        					   		'ng-options="product.name for product in materials track by product.id"> '+
         					   '</select></td>'+
     	    				   '<td><input name="test" class="form-control" type="text" ng-trim="false" ng-model="confMaterial['+index+'].standard"/></td>'+
     	    		           '<td><input name="test" class="form-control" type="number" ng-trim="false" disabled ng-model="confMaterial['+index+'].price"/></td>'+
-    	    		           '<td><input name="test" class="form-control" type="number" ng-trim="false" ng-model="confMaterial['+index+'].count"/></td>'+
-    	    		           '<td>{{confMaterial['+index+'].price*confMaterial['+index+'].count}}</td></tr>';
-            	attrs.value = parseInt(attrs.value) + 1;
-                scope.$apply(function() {
+    	    		           '<td><input name="test" class="form-control" type="number" ng-trim="false" ng-model="confMaterial['+index+'].difCount"/></td>'+
+    	    		           '<td><input name="test" class="form-control" type="number" ng-trim="false" ng-model="confMaterial['+index+'].difTotal"/></td></tr>';
+            	//attrs.value = parseInt(attrs.value) + 1;
+            	scope.materialIndex = index + 1;
+            	scope.$apply(function() {
                     var content = $compile(template)(scope);
                     element.parent().parent().parent().append(content);
                 })
-            });
+            });*/
+        	//这么简单的套路，我却用了半天来想。。
+        	element.on("click",function(){
+        		var index = scope.materialIndex;
+        		scope.materialIndex = index + 1;
+        		scope.$apply(function() {
+        			scope.confMaterial[index] = {};
+        		});
+        	})
         }
     }
 }).directive("inputDynamicMan", function($compile){
 	return{
         link: function(scope, element, attrs){
             element.on("click", function() {
-            	var index = attrs.value;
+            	var index = scope.manIndex;//attrs.value;//attrs.value;
             	
-            	var template = '<tr><td><button del-elment>删除</button></td><td><select ng-change="selectManChange(confMan['+index+'].name,'+index+')" class="form-control" ng-model="confMan['+index+'].name" '+
+            	var template = '<tr><td><button id="manDel" del-elment>删除</button></td><td><select ng-change="selectManChange(confMan['+index+'].name,'+index+')" class="form-control" ng-model="confMan['+index+'].name" '+
         					   		'ng-options="man.name for man in mans track by man.id"> '+
         					   '</select></td>'+
     	    				   '<td><input name="test" class="form-control" type="text" ng-trim="false" ng-model="confMan['+index+'].standard"/></td>'+
     	    		           '<td><input name="test" class="form-control" type="number" ng-trim="false" disabled ng-model="confMan['+index+'].price"/></td>'+
-    	    		           '<td><input name="test" class="form-control" type="number" ng-trim="false" ng-model="confMan['+index+'].count"/></td>'+
-    	    		           '<td>{{confMan['+index+'].price*confMan['+index+'].count}}</td></tr>';
-            	attrs.value = parseInt(attrs.value) + 1;
+    	    		           '<td><input name="test" class="form-control" type="number" ng-trim="false" ng-model="confMan['+index+'].difCount"/></td>'+
+    	    		           '<td><input name="test" class="form-control" type="number" ng-trim="false" ng-model="confMan['+index+'].difTotal"/></td></tr>';
+            	//attrs.value = parseInt(attrs.value) + 1;
+            	scope.manIndex = index + 1;
                 scope.$apply(function() {
                     var content = $compile(template)(scope);
                     element.parent().parent().parent().append(content);
@@ -125,6 +134,20 @@ return {
 	return{
         link: function(scope, element, attrs){
         	element.on("click", function() {
+        		if(attrs.id=='materialDel'){
+        			scope.$apply(function() {
+            			scope.materialIndex = scope.materialIndex - 1;
+            			scope.confMaterial.splice(scope.materialIndex,1);
+        			});
+        		}
+        			
+        		if(attrs.id=='manDel'){
+        			scope.$apply(function() {
+        				scope.manIndex = scope.manIndex - 1;
+        				scope.confMan.splice(scope.manIndex,1);
+        			});
+        		}
+        			
         		element.parent().parent().remove();
         	});
         }
