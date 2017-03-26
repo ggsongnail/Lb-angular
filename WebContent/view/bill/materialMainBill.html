@@ -85,12 +85,11 @@ th{
 							<th colspan=6 style="color: #3c763d;">{{key}}</th>
 						</tr>
 						<tr ng-repeat="orderProduct in value">
-							<th scope="row">{{orderProduct.materialProduct.name}}</th>
-							<td>{{orderProduct.materialProduct.standard}}</td>
-							<td>{{orderProduct.materialProduct.price}}</td>
-							<td><input class="input-minier form-control" type="number"
-								ng-model="orderProduct.count" min="0"></td>
-							<td>{{orderProduct.materialProduct.price*orderProduct.count}}</td>
+							<th scope="row">{{orderProduct.productName}}</th>
+							<td>{{orderProduct.standard}}</td>
+							<td>{{orderProduct.price}}</td>
+							<td><input class="input-minier form-control" type="number" ng-model="orderProduct.count" min="0"></td>
+							<td>{{orderProduct.price*orderProduct.count}}</td>
 						</tr>
 						<tr>
 							<th colspan=6></th>
@@ -114,13 +113,11 @@ th{
 							<th colspan=6 style="color: #3c763d;">{{key}}</th>
 						</tr>
 						<tr ng-repeat="orderProduct in value">
-							<th scope="row">{{orderProduct.materialProduct.name}}</th>
-							<td>{{orderProduct.materialProduct.standard}}</td>
-							<td>{{orderProduct.materialProduct.price}}</td>
+							<th scope="row">{{orderProduct.productName}}</th>
+							<td>{{orderProduct.standard}}</td>
+							<td>{{orderProduct.price}}</td>
 							<td><input class="input-minier form-control" type="number" ng-model="orderProduct.count" min="0"></td>
-							<td>
-								 {{orderProduct.materialProduct.price*orderProduct.count}}
-							</td>
+							<td>{{orderProduct.price*orderProduct.count}}</td>
 						</tr>
 						<tr>
 							<th colspan=6></th>
