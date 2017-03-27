@@ -85,69 +85,69 @@ th{
 						</tr>
 					</thead>
 					<tbody>
-						<tr><th colspan=8 style="color: #3c763d;">{{latexs[0].artificialFee.dictionaryClassify.name}}</th></tr>
+						<tr><th colspan=8 style="color: #3c763d;">{{latexs[0].dictionaryClassifyName}}</th></tr>
 						<tr ng-repeat="latex in latexs">
 							<th scope="row">{{$index+1}}</th>
-							<td>{{latex.artificialFee.name}}</td>
-							<td>{{latex.artificialFee.style}}</td>
-							<td>{{latex.artificialFee.standard}}</td>
-							<td>{{latex.artificialFee.price}}</td>
-							<td>{{latex.artificialFee.lowFee}}</td>
-							<td  style="word-wrap:break-word;width:30%">{{latex.artificialFee.remark}}</td>
+							<td>{{latex.name}}</td>
+							<td>{{latex.style}}</td>
+							<td>{{latex.standard}}</td>
+							<td>{{latex.price}}</td>
+							<td>{{latex.lowFee}}</td>
+							<td  style="word-wrap:break-word;width:30%">{{latex.remark}}</td>
 							<td><input type="number" ng-model="latex.count" class="input-mini form-control"></td>
-							<td>{{latex.count*latex.artificialFee.price>latex.artificialFee.lowFee?latex.count*latex.artificialFee.price:latex.artificialFee.lowFee*(latex.count>0?1:0)}}</td>
+							<td>{{latex.count*latex.price>latex.lowFee?latex.count*latex.price:latex.lowFee*(latex.count>0?1:0)}}</td>
 							<td><input type="number" ng-model="latex.totalReal" class="input-mini form-control"></td>
 						</tr>
-						<tr><th colspan=8 style="color: #3c763d;">{{woods[0].artificialFee.dictionaryClassify.name}}</th></tr>
+						<tr><th colspan=8 style="color: #3c763d;">{{woods[0].dictionaryClassifyName}}</th></tr>
 						<tr ng-repeat="wood in woods">
 							<th scope="row">{{$index+1}}</th>
-							<td>{{wood.artificialFee.name}}</td>
-							<td>{{wood.artificialFee.style}}</td>
-							<td>{{wood.artificialFee.standard}}</td>
-							<td>{{wood.artificialFee.price}}</td>
-							<td>{{wood.artificialFee.lowFee}}</td>
-							<td  style="word-wrap:break-word;width:30%">{{wood.artificialFee.remark}}</td>
+							<td>{{wood.name}}</td>
+							<td>{{wood.style}}</td>
+							<td>{{wood.standard}}</td>
+							<td>{{wood.price}}</td>
+							<td>{{wood.lowFee}}</td>
+							<td  style="word-wrap:break-word;width:30%">{{wood.remark}}</td>
 							<td><input type="number" ng-model="wood.count" class="input-mini form-control"></td>
-							<td>{{wood.count*wood.artificialFee.price>wood.artificialFee.lowFee?wood.count*wood.artificialFee.price:wood.artificialFee.lowFee*(wood.count>0?1:0)}}</td>
+							<td>{{wood.count*wood.price>wood.lowFee?wood.count*wood.price:wood.lowFee*(wood.count>0?1:0)}}</td>
 							<td><input type="number" ng-model="wood.totalReal" class="input-mini form-control"></td>
 						</tr>
-						<tr><th colspan=8 style="color: #3c763d;">{{waters[0].artificialFee.dictionaryClassify.name}}</th></tr>
+						<tr><th colspan=8 style="color: #3c763d;">{{waters[0].dictionaryClassifyName}}</th></tr>
 						<tr ng-repeat="water in waters">
 							<th scope="row">{{$index+1}}</th>
-							<td>{{water.artificialFee.name}}</td>
-							<td>{{water.artificialFee.style}}</td>
-							<td>{{water.artificialFee.standard}}</td>
-							<td>{{water.artificialFee.price}}</td>
-							<td>{{water.artificialFee.lowFee}}</td>
-							<td  style="word-wrap:break-word;width:30%">{{water.artificialFee.remark}}</td>
+							<td>{{water.name}}</td>
+							<td>{{water.style}}</td>
+							<td>{{water.standard}}</td>
+							<td>{{water.price}}</td>
+							<td>{{water.lowFee}}</td>
+							<td  style="word-wrap:break-word;width:30%">{{water.remark}}</td>
 							<td><input type="number" ng-model="water.count" class="input-mini form-control"></td>
-							<td>{{water.count*water.artificialFee.price>water.artificialFee.lowFee?water.count*water.artificialFee.price:water.artificialFee.lowFee*(water.count>0?1:0)}}</td>
+							<td>{{water.count*water.price>water.lowFee?water.count*water.price:water.lowFee*(water.count>0?1:0)}}</td>
 							<td><input type="number" ng-model="water.totalReal" class="input-mini form-control"></td>
 						</tr>
-						<tr><th colspan=8 style="color: #3c763d;">{{basics[0].artificialFee.dictionaryClassify.name}}</th></tr>
+						<tr><th colspan=8 style="color: #3c763d;">{{basics[0].dictionaryClassifyName}}</th></tr>
 						<tr ng-repeat="basic in basics">
 							<th scope="row">{{$index+1}}</th>
-							<td>{{basic.artificialFee.name}}</td>
-							<td>{{basic.artificialFee.style}}</td>
-							<td>{{basic.artificialFee.standard}}</td>
-							<td>{{basic.artificialFee.price}}</td>
-							<td>{{basic.artificialFee.lowFee}}</td>
-							<td  style="word-wrap:break-word;width:30%">{{basic.artificialFee.remark}}</td>
+							<td>{{basic.name}}</td>
+							<td>{{basic.style}}</td>
+							<td>{{basic.standard}}</td>
+							<td>{{basic.price}}</td>
+							<td>{{basic.lowFee}}</td>
+							<td  style="word-wrap:break-word;width:30%">{{basic.remark}}</td>
 							<td><input type="number" ng-model="basic.count" class="input-mini form-control"></td>
-							<td>{{basic.count*basic.artificialFee.price>basic.artificialFee.lowFee?basic.count*basic.artificialFee.price:basic.artificialFee.lowFee*(basic.count>0?1:0)}}</td>
+							<td>{{basic.count*basic.price>basic.lowFee?basic.count*basic.price:basic.lowFee*(basic.count>0?1:0)}}</td>
 							<td><input type="number" ng-model="basic.totalReal" class="input-mini form-control"></td>
 						</tr>
-						<tr><th colspan=8 style="color: #3c763d;">{{others[0].artificialFee.dictionaryClassify.name}}</th></tr>
+						<tr><th colspan=8 style="color: #3c763d;">{{others[0].dictionaryClassifyName}}</th></tr>
 						<tr ng-repeat="other in others">
 							<th scope="row">{{$index+1}}</th>
-							<td>{{other.artificialFee.name}}</td>
-							<td>{{other.artificialFee.style}}</td>
-							<td>{{other.artificialFee.standard}}</td>
-							<td>{{other.artificialFee.price}}</td>
-							<td>{{other.artificialFee.lowFee}}</td>
-							<td  style="word-wrap:break-word;width:30%">{{other.artificialFee.remark}}</td>
+							<td>{{other.name}}</td>
+							<td>{{other.style}}</td>
+							<td>{{other.standard}}</td>
+							<td>{{other.price}}</td>
+							<td>{{other.lowFee}}</td>
+							<td  style="word-wrap:break-word;width:30%">{{other.remark}}</td>
 							<td><input type="number" ng-model="other.count" class="input-mini form-control"></td>
-							<td>{{other.count*other.artificialFee.price>other.artificialFee.lowFee?other.count*other.artificialFee.price:other.artificialFee.lowFee*(other.count>0?1:0)}}</td>
+							<td>{{other.count*other.price>other.lowFee?other.count*other.price:other.lowFee*(other.count>0?1:0)}}</td>
 							<td><input type="number" ng-model="other.totalReal" class="input-mini form-control"></td>
 						</tr>
 						<tr><th colspan="6">人工费总计：{{getTotal()}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;实收：{{totalRealPrice}}</th><th colspan="4"></th></tr>

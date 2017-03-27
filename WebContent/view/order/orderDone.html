@@ -67,8 +67,7 @@ th{
 						
 					<tbody>
 						<tr>
-							<th colspan=8>材料费变更：<button ng-click="show()">click</button><button input-dynamic-material>添加</button><input type="text" ng-model="materialIndex"/>
-							</th>
+							<th colspan=8>材料费变更：</button><button input-dynamic-material>添加</button></th>
 						</tr>
 						<tr>
 							<th style="width:10%">－－</th>
@@ -149,11 +148,11 @@ th{
 					<tbody>
 						<tr><th colspan=6>管理费及税金：</th></tr>
 						<tr>
-							<th colspan=3>合同预算总金额(元):</th>
+							<th colspan=3>合同预算总金额(元):{{orderLb.gross}}</th>
 							<th colspan=3>客户确认:</th>
 						</tr>
 						<tr>
-							<th colspan=3>合同决算总金额(元):</th>
+							<th colspan=3>合同决算总金额(元):{{orderLb.gross+getChangeManDifFee()+getChangeMaterialDifFee()}}</th>
 							<th colspan=3>竣工日期:</th>
 						</tr>
 					</tbody>

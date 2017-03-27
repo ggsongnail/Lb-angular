@@ -49,8 +49,8 @@
 							<th>签约日期</th>
 							<!-- <th>主要材料</th>
 							<th>辅助材料</th> -->
-							<th>合同总额</th>
-							<th>合同总额(实收)</th>
+							<th>合同总额(预算)</th><!-- 实收预算 -->
+							<th>合同总额(决算)</th><!-- 实收决算 -->
 							<th>操作</th>
 						</tr>
 					</thead>
@@ -75,8 +75,10 @@
 							<!-- <td>{{order.mainPrice | currency:'￥'}}</td>
 							<td>{{order.assistPrice | currency:'￥'}}</td>
 							<td>{{order.gross | currency:'￥'}}</td> -->
-							<td>{{order.artificialPrice+order.mainPrice+order.assistPrice | currency:'￥'}}</td>
-							<td>{{order.artificialPriceReal+order.mainPriceReal+order.assistPriceReal | currency:'￥'}}</td>
+							<!-- <td>{{order.artificialPrice+order.mainPrice+order.assistPrice | currency:'￥'}}</td>
+							<td>{{order.artificialPriceReal+order.mainPriceReal+order.assistPriceReal | currency:'￥'}}</td> -->
+							<td>{{order.gross | currency:'￥'}}</td>
+							<td>{{order.grossFinal | currency:'￥'}}</td>
 							<td>
 								<div class="btn-group">
 									<button type="button" class="btn btn-danger dropdown-toggle"

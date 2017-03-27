@@ -72,7 +72,7 @@ return {
     				scope.confMaterial[scope.materialIndex] = {};
     				scope.materialIndex += 1;
     			});
-        		//scope.$apply();//$timeout实现apply()功能
+        		scope.$apply();//$timeout实现apply()功能
         	})
         }
     }
