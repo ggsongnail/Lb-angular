@@ -4,9 +4,10 @@ return {
     require : "ngModel",
     scope : {
     	id:'@',
-    	ngModel:'='
+    	ngModel:'=',
+    	pla:'@'
     }, 
-    template : "<input id='{{id}}' type='text' class='form-control' ng-model='ngModel'>",
+    template : "<input id='{{id}}' type='text' class='form-control' ng-model='ngModel' placeholder={{pla}}>",
     link: function (scope, element, attrs, ctrl) {
         var unregister = scope.$watch(function(){
             element.on('change', function() {
