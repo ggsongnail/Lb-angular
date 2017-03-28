@@ -99,6 +99,9 @@ angular.module('myApp.viewlibang', ['ngRoute','directives'])
   }).when('/viewlibang/orderlb/excel', {
 	  	templateUrl : 'view/order/orderExcel.html',
 	  	controller : 'OrderCtrl'
+  }).when('/viewlibang/orderlb/refused ', {
+	  	templateUrl : 'view/order/orderRefused.html',
+	  	controller : 'OrderCtrl'
   })
   
   //主要材料收费单
@@ -553,10 +556,18 @@ angular.module('myApp.viewlibang', ['ngRoute','directives'])
 }])
 
 .controller('OrderCtrl', ['$scope','$http','$templateCache','NgTableParams','$location',
-	'$routeParams','$window',function($scope,$http,$templateCache,NgTableParams,$location,$routeParams,$window){
+	'$routeParams','$window','$timeout',function($scope,$http,$templateCache,NgTableParams,$location,$routeParams,$window,$timeout){
 	var url = $location.url();
+	$scope.all = false;//表单状态disabled
+	$scope.goaway = function(){
+		$scope.all = true;
+		$timeout(function(){
+			$scope.all = false;
+		},3000);
+	}
 	$scope.orderSE = {};
 	$scope.payWays = ['支付宝','微信','现金'];
+	$scope.orderStatus = ["进行中","完成","拒单"];
 	//Ｕpdate页面
 	if(url.indexOf('update')>-1){
 		//console.log("into update");
@@ -574,9 +585,8 @@ angular.module('myApp.viewlibang', ['ngRoute','directives'])
 	$scope.back = function(){
 		$location.path("/viewlibang/orderlb/list")
 	}
-	$scope.click0 = false;
 	$scope.submit = function(order){
-		$scope.click0 = true;
+		$scope.all = true;
 		$http({
 	          method: "post",
 	          data:order,
@@ -599,7 +609,6 @@ angular.module('myApp.viewlibang', ['ngRoute','directives'])
 			////console.log("success");
 			$scope.now = new Date();
 			$scope.tableParams = new NgTableParams({count: 15}, { counts: [15, 20, 30],dataset: response.data});
-			
 		}, function errorCallback(response) {
 		});
 	}
@@ -609,11 +618,19 @@ angular.module('myApp.viewlibang', ['ngRoute','directives'])
 	}
 	
 	$scope.searchExcel1 = function(orderSE){
-		console.log(orderSE);
+		//console.log(orderSE);
+		$scope.all = true;
+		$timeout(function(){
+			$scope.all = false;
+		},5000);
 		var url = "http://120.77.40.174:8080/Godspoom/orderlb/export/excel?beginDate="+orderSE.signingDate_GTE+"&endDate="+orderSE.signingDate_LTE
 		$window.location.href = url;
 	}
 	$scope.searchExcel2 = function(orderSE){
+		$scope.all = true;
+		$timeout(function(){
+			$scope.all = false;
+		},5000);
 		var url = "http://120.77.40.174:8080/Godspoom/orderlb/export/material/excel?beginDate="+orderSE.signingDate_GTE+"&endDate="+orderSE.signingDate_LTE
 		$window.location.href = url;
 	}
@@ -859,26 +876,24 @@ angular.module('myApp.viewlibang', ['ngRoute','directives'])
 		console.log($scope.confMaterial);
 	}
 	$scope.materialDel = function(index){
-		console.log(index+"=="+$scope.confMaterial[index].difCount);
-		$scope.materialIndex = $scope.materialIndex-1;
-		if(typeof($scope.confMaterial[index].difCount)=='undefined'){
+		if(typeof($scope.confMaterial[index].difCount)=='undefined'){//空值直接删除index以及数组内容
+			$scope.materialIndex = $scope.materialIndex-1;
 			$scope.confMaterial.splice(index,1);
-			console.log(123);
-		}else{
-			console.log("-=-=-="+index);
+		}else{//有值的将其归零并隐藏，这样做是为了将后台过来的数据在放到后台归零
 			$scope.confMaterial[index].difCount = 0;
 			$scope.confMaterial[index].difTotal = 0;
-			angular.element("#materialDel"+index).parent().parent().remove();
+			angular.element("#materialDel"+index).parent().parent().addClass("hidden");
 		}
 	}
 	$scope.manDel = function(index){
-		$scope.manIndex = $scope.manIndex-1;
-		if($scope.confMan[index].difCount == 'undefined')
+		if(typeof($scope.confMan[index].difCount) == 'undefined'){
+			$scope.manIndex = $scope.manIndex-1;
 			$scope.confMan.splice(index,1);
-		$scope.confMan[index].difCount = 0;
-		$scope.confMan[index].difTotal = 0;
-		
-		angular.element("#manDel"+index).parent().parent().remove();
+		}else{
+			$scope.confMan[index].difCount = 0;
+			$scope.confMan[index].difTotal = 0;
+			angular.element("#manDel"+index).parent().parent().addClass("hidden");
+		}
 	}
 	$scope.selectMaterialChange = function (data,index) {  
 		$scope.confMaterial[index] = data;

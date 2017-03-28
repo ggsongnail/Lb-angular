@@ -14,8 +14,12 @@
 			<div class="col-sm-6">
 				<!-- <form class="form-horizontal"　novalidate> -->
 					<div class="form-group">
+						<label for="name" class="col-sm-2 control-label">订单状态</label>
+						<div class="col-sm-4">
+							<select class="form-control" ng-model="order.orderStatus" ng-options="tt for tt in orderStatus"></select>
+						</div>
 						<label for="name" class="col-sm-2 control-label">系统编号</label>
-						<div class="col-sm-10">
+						<div class="col-sm-4">
 							<input type="text" ensure-unique="sysNo" class="form-control" ng-model="order.sysNo" name="sysNo" orderid="{{order.id}}"　 required>
 							<span style="float:right;color:red" ng-show="myForm.sysNo.$error.sysNounique">系统编号重复!</span>
 						</div>
@@ -171,7 +175,7 @@
 				<!-- </form> -->
 			</div>
 			<div class="col-md-12 text-center">
-				<input type="submit" ng-click="submit(order)" class="btn btn-warning" ng-disabled="click0" value="提交"><!-- ng-disabled="myForm.$invalid" -->
+				<input type="submit" ng-click="submit(order)" class="btn btn-warning"  ng-disabled="all" value="提交"><!-- ng-disabled="myForm.$invalid" -->
 			</div>
 			</form>
 		</div>
