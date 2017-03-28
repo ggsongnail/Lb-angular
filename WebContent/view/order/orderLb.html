@@ -80,7 +80,9 @@
 							<td>{{order.artificialPriceReal+order.mainPriceReal+order.assistPriceReal | currency:'￥'}}</td> -->
 							<td>{{order.gross | currency:'￥'}}</td>
 							<td>{{order.grossFinal | currency:'￥'}}</td>
-							<td>{{order.orderStatus}}</td>
+							
+							<td ng-if="order.orderStatus=='拒单'"><button ng-click="refuse(order.id)">{{order.orderStatus}}</button></td>
+							<td ng-if="order.orderStatus!='拒单'">{{order.orderStatus}}</td>
 							<td>
 								<div class="btn-group">
 									<button type="button" class="btn btn-danger dropdown-toggle"
