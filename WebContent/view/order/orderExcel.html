@@ -12,17 +12,17 @@
 					<div class="col-md-3">
 						<div class="input-group">
 							<div class="input-group-addon">开始时间</div>
-							<datetimepicker id="signingDateGT" ng-model="orderSE1.signingDate_GTE" format="Y/m/d H:i"></datetimepicker>
+							<datetimepicker id="signingDateGT" ng-model="orderSE1.signingDate_GTE" format="Y/m/d H:i" required></datetimepicker>
 						</div>
 					</div>
 					<div class="col-md-3">
 						<div class="input-group">
 							<div class="input-group-addon">结束时间</div>
-							<datetimepicker id="signingDateLT" ng-model="orderSE1.signingDate_LTE" format="Y/m/d H:i"></datetimepicker>
+							<datetimepicker id="signingDateLT" ng-model="orderSE1.signingDate_LTE" format="Y/m/d H:i" required></datetimepicker>
 						</div>
 					</div>
 					<div class="col-md-3">
-						<input type="submit" ng-click="searchExcel1(orderSE1)" class="btn btn-warning" value="导出">
+						<input type="submit" ng-click="searchExcel1(orderSE1)" ng-disabled="all" class="btn btn-warning" value="导出">
 					</div>
 				</div>
 			</div>
