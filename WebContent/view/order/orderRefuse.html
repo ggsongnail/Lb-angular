@@ -1,0 +1,109 @@
+<div>
+	<div class="container-fluid">
+		<form name="myForm"></form>
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<b>拒单操作</b>
+			</div>
+			<div class="panel-body">
+				<div class="row">
+					<div class="col-md-3">
+					</div>
+					<div class="col-md-3">
+						<div class="input-group">
+							<div class="input-group-addon">开始时间</div>
+							<datetimepicker id="signingDateGT" ng-model="orderSE1.signingDate_GTE" format="Y/m/d H:i" required></datetimepicker>
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div class="input-group">
+							<div class="input-group-addon">结束时间</div>
+							<datetimepicker id="signingDateLT" ng-model="orderSE1.signingDate_LTE" format="Y/m/d H:i" required></datetimepicker>
+						</div>
+					</div>
+					<div class="col-md-3">
+						<input type="submit" ng-click="searchExcel1(orderSE1)" ng-disabled="all" class="btn btn-warning" value="导出">
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<b>主要材料销售明细</b>
+			</div>
+			<div class="panel-body">
+				<div class="row">
+					<div class="col-md-3">
+					</div>
+					<div class="col-md-3">
+						<div class="input-group">
+							<div class="input-group-addon">开始时间</div>
+							<datetimepicker id="signingDateGT2" ng-model="orderSE2.signingDate_GTE" format="Y/m/d H:i"></datetimepicker>
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div class="input-group">
+							<div class="input-group-addon">结束时间</div>
+							<datetimepicker id="signingDateLT2" ng-model="orderSE2.signingDate_LTE" format="Y/m/d H:i"></datetimepicker>
+						</div>
+					</div>
+					<div class="col-md-3">
+						<input type="submit" ng-click="searchExcel2(orderSE2)" class="btn btn-warning" value="导出">
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<b>辅助材料销售明细</b>
+			</div>
+			<div class="panel-body">
+				<div class="row">
+					<div class="col-md-3">
+					</div>
+					<div class="col-md-3">
+						<div class="input-group">
+							<div class="input-group-addon">开始时间</div>
+							<datetimepicker id="signingDateGT3" ng-model="orderSE.signingDate_GTE3" format="Y/m/d H:i"></datetimepicker>
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div class="input-group">
+							<div class="input-group-addon">结束时间</div>
+							<datetimepicker id="signingDateLT3" ng-model="orderSE.signingDate_LTE3" format="Y/m/d H:i"></datetimepicker>
+						</div>
+					</div>
+					<div class="col-md-3">
+						<input type="submit" ng-click="search(orderSE)" class="btn btn-warning" value="导出">
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<b>拒绝订单情况</b>
+			</div>
+			<div class="panel-body">
+				<div class="row">
+					<div class="col-md-3">
+					</div>
+					<div class="col-md-3">
+						<div class="input-group">
+							<div class="input-group-addon">开始时间</div>
+							<datetimepicker id="signingDateGT4" ng-model="orderSE.signingDate_GTE4" format="Y/m/d H:i"></datetimepicker>
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div class="input-group">
+							<div class="input-group-addon">结束时间</div>
+							<datetimepicker id="signingDateLT4" ng-model="orderSE.signingDate_LTE4" format="Y/m/d H:i"></datetimepicker>
+						</div>
+					</div>
+					<div class="col-md-3">
+						<input type="submit" ng-click="search(orderSE)" class="btn btn-warning" value="导出">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
