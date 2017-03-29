@@ -91,16 +91,17 @@
 										操作 <span class="caret"></span>
 									</button>
 									<ul class="dropdown-menu" style="margin-left: -92px;">
-										<li><a href="#!/viewlibang/orderlb/update/{{order.id}}">编辑</a></li>
-										<li><a href="#!/viewlibang/materialmainbill/{{order.id}}/0">主要材料单</a></li>
-										<li><a href="#!/viewlibang/materialassistbill/{{order.id}}/1">辅助材料单</a></li>
-										<li><a href="#!/viewlibang/artificialfeebill/{{order.id}}">人工收费单</a></li>
-										<li><a href="#!/viewlibang/orderlb/done/{{order.id}}">决算单</a></li>
+										<li><a href="#!/viewlibang/orderlb/update/{{order.id}}"><i class="fa fa-edit">&nbsp;&nbsp;编辑</i></a></li>
+										<li><a href="#!/viewlibang/materialmainbill/{{order.id}}/0"><i class="fa fa-briefcase">&nbsp;&nbsp;主要材料单</i></a></li>
+										<li><a href="#!/viewlibang/materialassistbill/{{order.id}}/1"><i class="fa fa-cube">&nbsp;&nbsp;辅助材料单</i></a></li>
+										<li><a href="#!/viewlibang/artificialfeebill/{{order.id}}"><i class="fa fa-gavel">&nbsp;&nbsp;人工收费单</i></a></li>
+										<li><a href="#!/viewlibang/orderlb/done/{{order.id}}"><i class="fa fa-money">&nbsp;&nbsp;决算单</i></a></li>
+										<li><a href="javascript:void(0)" ng-click="exportExcel(order.id)" ng-disabled="all"><i class="fa fa-file-excel-o">&nbsp;&nbsp;导出excel</i></a></li>
 										<!-- <li><a href="#!/viewlibang/kidsetsbill/{{order.id}}/13">儿童套餐收费单</a></li>
 										<li><a href="#!/viewlibang/artsetsbill/{{order.id}}/14">艺术背景套餐收费单</a></li>
 										<li><a href="#!/viewlibang/sunsetsbill/{{order.id}}/15">阳台厨卫套餐收费单</a></li> -->
 										<li role="separator" class="divider"></li>
-										<li><a href="#">删除</a></li>
+										<li><a href="#"><i class="fa fa-trash">&nbsp;&nbsp;删除</i></a></li>
 									</ul>
 								</div>
 							</td>
