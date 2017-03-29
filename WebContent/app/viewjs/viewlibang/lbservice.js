@@ -37,7 +37,7 @@ app.factory('sessionInjector', ['$location', '$cookies', '$cookieStore', functio
 
 app.config(['$httpProvider', function($httpProvider) {
     //$httpProvider.interceptors.push('myInterceptor');
-    //$httpProvider.interceptors.push('sessionInjector');
+    $httpProvider.interceptors.push('sessionInjector');
 }]);
 
 

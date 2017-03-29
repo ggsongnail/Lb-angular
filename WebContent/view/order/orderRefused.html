@@ -5,36 +5,41 @@ td{
 </style>
 <div>
 	<div class="container-fluid">
-		<div class="panel panel-default">
-			<div class="panel-heading">
-				<b>拒单操作</b>
-				<button ng-click="sumbit()" style="float:right"><i class="fa fa-save"></i>保存</button>
-				<button ng-click="add()" style="float:right"><i class="fa fa-plus"></i>增加</button>
-			</div>
-			<div class="panel-body">
-				<div class="row">
-					<div class="col-md-12">
-						<table class="table table-bordered">
-							<tr>
-								<th>－－</th>
-								<th>跟进销售人员</th>
-								<th>洽谈时间</th>
-								<th>洽谈方式</th>
-								<th>拒绝原因</th>
-								<th>提供方案</th>
-							</tr>
-							<tr ng-repeat="refuse in refuses">
-								<td>第{{$index}}次</td>
-								<td><input name="test" class="form-control" type="text" ng-model="refuse.people"/></td>
-								<td><datetimepicker id="talkTime{{$index}}" ng-model="refuse.talkTime"  format="Y/m/d H:i"></datetimepicker></td>
-								<td><input name="test" class="form-control" type="text" ng-model="refuse.talkWay"/></td>
-								<td><textarea rows="3"　class="form-control" ng-model="refuse.reason"></textarea></td>
-								<td><textarea rows="3"　class="form-control" ng-model="refuse.plan"></textarea></td>
-							</tr>
-						</table>
+		<form class="form-horizontal" id="myForm" name="myForm" ng-submit="sumbit(myForm.$valid)"　novalidate="">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<b>拒单操作({{orderLb.sysNo}})</b>
+					<button ng-click="export()" style="float:right"><i class="fa fa-file-excel-o"></i>导出EXCEL</button>
+					<button type="submit" style="float:right"><i class="fa fa-save"></i>保存</button>
+					<button ng-click="add()" style="float:right"><i class="fa fa-plus"></i>增加</button>
+				</div>
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-md-12">
+							
+								<table class="table table-bordered">
+									<tr>
+										<th>－－</th>
+										<th>跟进销售人员</th>
+										<th>洽谈时间</th>
+										<th>洽谈方式</th>
+										<th>拒绝原因</th>
+										<th>提供方案</th>
+									</tr>
+									<tr ng-repeat="refuse in refuses">
+										<td>第{{$index}}次</td>
+										<td><input name="test" class="form-control" type="text" ng-model="refuse.people" required/></td>
+										<td><datetimepicker id="talkTime{{$index}}" ng-model="refuse.talkTime"  format="Y/m/d H:i"></datetimepicker></td>
+										<td><input name="test" class="form-control" type="text" ng-model="refuse.talkWay"/></td>
+										<td><textarea rows="3"　class="form-control" ng-model="refuse.reason"></textarea></td>
+										<td><textarea rows="3"　class="form-control" ng-model="refuse.plan"></textarea></td>
+									</tr>
+								</table>
+							
+						</div>
 					</div>
 				</div>
 			</div>
-		</div>
+		</form>
 	</div>
 </div>

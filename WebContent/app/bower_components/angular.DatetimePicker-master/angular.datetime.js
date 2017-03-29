@@ -88,5 +88,16 @@ return {
         	});
         }
     }
-}]);
+}]).directive('backButton', function($timeout){
+    return {
+        restrict: 'A',
+        link: function(scope, element, attrs) {
+          element.bind('click',function(){
+        	  $timeout(function(){
+        		  history.back();
+        	  });
+          });
+        }
+     }
+});;
 
