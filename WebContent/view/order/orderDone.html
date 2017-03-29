@@ -19,15 +19,25 @@ th{
 </style>
 <body>
 	<div class="container">
-    	<!-- <form name="form">
-    		
-    		<div id="jack"></div>
-    		<button ng-click="show()">click</button>
-    	</form>
-    	<label>{{logo.name}}</label> -->
     	<div class="row">
-			<div class="text-right">
-				<button class="btn btn-warning" ng-click="submit()">提交</button>
+			<div class="col-md-6">
+				<button type="button" class="btn btn-danger dropdown-toggle"
+					data-toggle="dropdown" aria-haspopup="true"
+					aria-expanded="false">
+					其他收费单 <span class="caret"></span>
+				</button>
+				<ul class="dropdown-menu">
+					<li><a href="#!/viewlibang/materialmainbill/{{orderLb.id}}/0"><i class="fa fa-briefcase">&nbsp;&nbsp;主要材料单</i></a></li>
+					<li><a href="#!/viewlibang/materialassistbill/{{orderLb.id}}/1"><i class="fa fa-cube">&nbsp;&nbsp;辅助材料单</i></a></li>
+					<li><a href="#!/viewlibang/artificialfeebill/{{orderLb.id}}"><i class="fa fa-gavel">&nbsp;&nbsp;人工收费单</i></a></li>
+					<li><a href="#!/viewlibang/orderlb/done/{{orderLb.id}}"><i class="fa fa-money">&nbsp;&nbsp;决算单</i></a></li>
+				</ul>
+			</div>
+			<div class="col-md-6">
+				<div class="text-right">
+					<button class="btn btn-warning" ng-click="submit()">提交</button>
+					<button class="btn btn-default" back-button>取消</button>
+				</div>
 			</div>
 		</div>
 		<div class="row">
