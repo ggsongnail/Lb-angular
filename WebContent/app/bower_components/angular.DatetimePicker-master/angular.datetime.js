@@ -48,7 +48,7 @@ return {
                  
                  $http({
                      method: 'get',
-                     url: 'http://192.168.1.103:8081/Lb-spring/orderlb/validity/'+keyProperty+'/'+currentValue+'/'+id//根据换成自己的url
+                     url: scope.url+'/orderlb/validity/'+keyProperty+'/'+currentValue+'/'+id//根据换成自己的url
                      /*params:{
                          "orderName":n
                      }*/

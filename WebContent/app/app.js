@@ -17,4 +17,5 @@ angular.module('myApp', [
 }]).run(function($rootScope) {
     $rootScope.test = new Date();
     $rootScope.name = '';
+    $rootScope.url = 'http://120.77.40.174:8080/Godspoom';
 });
