@@ -129,7 +129,7 @@
 		step:60,
 		closeOnDateSelect:0,
 		closeOnWithoutClick:true,
-		timepicker:true,
+		timepicker:false,
 		datepicker:true,
 		minDate:false,
 		maxDate:false,

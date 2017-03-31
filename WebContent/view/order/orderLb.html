@@ -10,10 +10,10 @@
 			<div class="col-md-11">
 				<form class="form-inline">
 					<div class="form-group">
-						<datetimepicker id="signingDateGT" ng-model="orderSE.signingDate_GTE"  format="Y/m/d H:i" pla="开始时间"></datetimepicker>
+						<datetimepicker id="signingDateGT" ng-model="orderSE.signingDate_GTE"  format="Y/m/d" pla="开始时间"></datetimepicker>
 					</div>
 					<div class="form-group">
-						<datetimepicker id="signingDateLT" ng-model="orderSE.signingDate_LTE"  format="Y/m/d H:i" pla="结束时间"></datetimepicker>
+						<datetimepicker id="signingDateLT" ng-model="orderSE.signingDate_LTE"  format="Y/m/d" pla="结束时间"></datetimepicker>
 					</div>
 					<div class="form-group">
 						<input type="text" class="form-control" ng-model="orderSE.sysNo_EQ" placeholder="系统编号">
@@ -21,7 +21,8 @@
 					<div class="form-group">
 						<select class="form-control" ng-model="orderSE.orderStatus_EQ"  ng-options="tt for tt in orderStatus"></select>
 					</div>
-					<button type="submit" ng-click="search(orderSE)" class="btn btn-default">查询</button>
+					<button type="submit" ng-click="search(orderSE)" class="btn btn-warning">查询</button>
+					<button class="btn btn-success" ng-click="all||exportExcel(orderSE)" ng-disabled="all"><i class="fa fa-file-excel-o">&nbsp;&nbsp;导出Excel</i></button>
 				</form>
 			</div>
 			<div class="col-md-1"><a class="btn btn-info" href="#!/viewlibang/orderlb/create">新增</a></div>
@@ -47,6 +48,7 @@
 							<th>定金</th>
 							<th>预算</th>-->
 							<th>签约日期</th>
+							<th>订单来源</th>
 							<!-- <th>主要材料</th>
 							<th>辅助材料</th> -->
 							<th>合同总额(预算)</th><!-- 实收预算 -->
@@ -78,6 +80,7 @@
 							<td>{{order.gross | currency:'￥'}}</td> -->
 							<!-- <td>{{order.artificialPrice+order.mainPrice+order.assistPrice | currency:'￥'}}</td>
 							<td>{{order.artificialPriceReal+order.mainPriceReal+order.assistPriceReal | currency:'￥'}}</td> -->
+							<td>{{order.orderFrom}}</td>
 							<td>{{order.gross | currency:'￥'}}</td>
 							<td>{{order.grossFinal | currency:'￥'}}</td>
 							
@@ -96,7 +99,7 @@
 										<li><a href="#!/viewlibang/materialassistbill/{{order.id}}/1"><i class="fa fa-cube">&nbsp;&nbsp;辅助材料单</i></a></li>
 										<li><a href="#!/viewlibang/artificialfeebill/{{order.id}}"><i class="fa fa-gavel">&nbsp;&nbsp;人工收费单</i></a></li>
 										<li><a href="#!/viewlibang/orderlb/done/{{order.id}}"><i class="fa fa-money">&nbsp;&nbsp;决算单</i></a></li>
-										<li><a href="javascript:void(0)" ng-click="exportExcel(order.id)" ng-disabled="all"><i class="fa fa-file-excel-o">&nbsp;&nbsp;导出excel</i></a></li>
+										<!-- <li><a href="javascript:void(0)" ng-click="exportExcel(order.id)" ng-disabled="all"><i class="fa fa-file-excel-o">&nbsp;&nbsp;导出excel</i></a></li> -->
 										<!-- <li><a href="#!/viewlibang/kidsetsbill/{{order.id}}/13">儿童套餐收费单</a></li>
 										<li><a href="#!/viewlibang/artsetsbill/{{order.id}}/14">艺术背景套餐收费单</a></li>
 										<li><a href="#!/viewlibang/sunsetsbill/{{order.id}}/15">阳台厨卫套餐收费单</a></li> -->

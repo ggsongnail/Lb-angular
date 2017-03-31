@@ -18,7 +18,7 @@ return {
             });
             element.on('click',function(){
                 $("#"+attrs.id).datetimepicker({
-                    format : attrs.format || 'Y/m/d h:i',
+                    format : attrs.format || 'Y/m/d',// h:i
                     onClose : function(){
                         element.change();
                     }
